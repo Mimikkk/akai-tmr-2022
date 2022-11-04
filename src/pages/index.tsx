@@ -4,26 +4,25 @@ import { throttle } from "lodash-es";
 import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
 import { Building } from "../models";
-import { BuildingService } from "../services/building.service";
-import Link from "next/link";
+import { BuildingService } from "../services";
 import { useRouter } from "next/router";
 import { URLS } from "../urls.enum";
 
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
+  const [building, setBuilding] = useState<Building[]>([]);
   const { push } = useRouter();
-  const [rooms, setRooms] = useState<Building[]>([]);
 
   const handleSearch = useCallback(
     throttle(async (query: string) => {
       try {
         if (isSearching) return;
         if (query.length < 2) {
-          setRooms([]);
+          setBuilding([]);
           return;
         }
         toggleSearching(true);
-        setRooms(await BuildingService.search(query));
+        setBuilding(await BuildingService.search(query));
       } finally {
         toggleSearching(false);
       }
@@ -37,12 +36,12 @@ const App = () => {
         <SearchField onChange={handleSearch}>Wyszukaj salę</SearchField>
         <div>
           <RoomsList>
-            {rooms.map((building, index) => {
+            {building.map((building, index) => {
               return (
                 <Room
                   key={index}
-                  title={building.names[0]}
-                  roomNames={building.names.slice(1)}
+                  title={building.defaultName}
+                  roomNames={building.rooms.map((room) => room.names.join(","))}
                   building={mockData.buildings.find((building) => building.id === building.id)!.names.join(", ")}
                 />
               );
