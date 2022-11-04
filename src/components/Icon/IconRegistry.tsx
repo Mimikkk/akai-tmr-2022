@@ -1,6 +1,9 @@
 import cx from "classnames";
+import { HTMLProps, SVGProps } from "react";
 
-const Magnifier = (props: { className?: string }) => (
+interface IconProps extends SVGProps<SVGSVGElement> {}
+
+const Magnifier = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -16,7 +19,7 @@ const Magnifier = (props: { className?: string }) => (
     />
   </svg>
 );
-const ArrowRight = (props: { className?: string }) => (
+const ArrowRight = (props: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -28,7 +31,7 @@ const ArrowRight = (props: { className?: string }) => (
     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
   </svg>
 );
-const QuestionCircle = (props: { className?: string }) => {
+const QuestionCircle = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
