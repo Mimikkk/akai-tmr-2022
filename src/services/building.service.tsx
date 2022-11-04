@@ -9,10 +9,7 @@ const toBuilding = ({ id, name, lat, lon }: any) => ({
     longitude: lon,
   },
 });
-export const sortFn = <T, P>(
-  query: string,
-  options: Building[],
-): Building[] => {
+export const sortFn = <T, P>(query: string, options: Building[]): Building[] => {
   const startsWith = [];
   const included = [];
 
@@ -31,23 +28,19 @@ export const sortFn = <T, P>(
 
 export const BuildingService = {
   readAll: async () => {
-    const { data, error }: any = await supabase
+    const { data: buildings, error }: any = await supabase
       .from("buildings")
-      .select(
-        `*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`,
-      );
+      .select(`*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`);
     if (error) throw error;
-    return data.map(toBuilding);
+    return buildings.map(toBuilding);
   },
 
   search: async (query: string) => {
-    const { data }: any = await supabase
+    const { data: buildings }: any = await supabase
       .from("buildings")
-      .select(
-        `*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`,
-      )
+      .select(`*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`)
       .ilike("name", `%${query}%`);
 
-    return sortFn(query, data.map(toBuilding));
+    return sortFn(query, buildings.map(toBuilding));
   },
 };
