@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import cx from "classnames";
 import s from "./Rooms.module.scss";
+
 interface Props {
   children: ReactNode;
   className?: string;
