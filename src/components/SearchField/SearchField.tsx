@@ -1,18 +1,19 @@
 import s from "./SearchField.module.scss";
 import { ChangeEvent, FC, PropsWithChildren, useCallback, useId } from "react";
+import cx from "classnames";
 
 interface SearchFieldProps extends PropsWithChildren {
   onChange?: (query: string, event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Magnifier = () => (
+const Magnifier = (props: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    className="w-6 h-6"
+    className={cx("w-6 h-6", props?.className)}
   >
     <path
       stroke-linecap="round"
@@ -33,7 +34,7 @@ export const SearchField: FC<SearchFieldProps> = (props) => {
 
   return (
     <div className={s.container}>
-      <Magnifier />
+      <Magnifier className={s.icon} />
       <input
         id={id}
         className={s.input}
