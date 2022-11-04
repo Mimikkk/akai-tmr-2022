@@ -1,11 +1,11 @@
 import { Building, buildings } from "./buildings";
-import { rooms, Rooms } from "./rooms";
+import { rooms, Room } from "./rooms";
 import { Campus, campuses } from "./campuses";
 
 interface MockData {
   campuses: Campus[];
   buildings: Building[];
-  rooms: Rooms[];
+  rooms: Room[];
 }
 
 export const mockData: MockData = {
