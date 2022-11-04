@@ -15,11 +15,12 @@ export const BuildingService = {
     if (error) throw error;
     return data.map(toBuilding);
   },
+
   search: async (query: string) => {
     const { data }: any = await supabase
       .from("buildings")
       .select("*")
-      .like("name", `%${query}%`);
+      .ilike("name", `%${query}%`);
 
     return data.map(toBuilding);
   },
