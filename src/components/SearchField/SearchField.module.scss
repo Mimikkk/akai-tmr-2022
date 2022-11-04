@@ -15,10 +15,6 @@ $font-size: 2.5rem;
   &:focus-within {
     @apply outline-8;
     @apply bg-slate-50;
-
-    .icon::after {
-      @apply border-slate-900;
-    }
   }
 
   &:is(:hover, :focus-within) {
@@ -57,11 +53,7 @@ $font-size: 2.5rem;
   }
 
   .icon {
-    @apply self-center w-16 h-full ml-4 px-2;
-    &::after {
-      @apply transition-all;
-      @apply border-r-2;
-    }
+    @apply w-16 ml-4 px-2;
   }
 
   .input:placeholder-shown ~ .label {
