@@ -43,12 +43,14 @@
     "lodash-es": "^4.17.21",
     "next": "^13.0.2",
     "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
+    "react-use": "^17.4.0",
     "zustand": "^4.1.4"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.6",
     "@faker-js/faker": "^7.6.0",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
