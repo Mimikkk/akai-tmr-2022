@@ -1,10 +1,16 @@
 import "../../styles/globals.css";
-import { SearchField } from "../components";
+import { Rooms } from "../components";
+import { Room } from "../components/RoomsList/components/Room";
+import { mockedRooms } from "../components/RoomsList/mockedRooms";
 
 const App = () => {
   return (
-    <div className="bg-gray-500 w-screen h-screen">
-      <SearchField />
+    <div>
+      <Rooms>
+        {mockedRooms.map((room) => (
+          <Room title={room.title} roomNames={room.roomNames} building={room.building} />
+        ))}
+      </Rooms>
     </div>
   );
 };
