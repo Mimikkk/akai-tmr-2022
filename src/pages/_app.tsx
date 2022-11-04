@@ -3,16 +3,26 @@ import type { AppProps } from "next/app";
 import s from "./_app.module.scss";
 import { Icon } from "../components";
 import { useState } from "react";
-import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import { QueryClient } from "@tanstack/query-core";
+import { QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [showConfetti, toggleConfetti] = useState(false);
   const { width, height } = useWindowSize();
   const [clickCount, setClickCount] = useState(0);
 
-  return (
-    <div
+  return (    <QueryClientProvider client={queryClient}>
+
+  <div
       className={s.app}
       onClick={() => {
         if (clickCount === 10) toggleConfetti(!showConfetti);
@@ -32,7 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           name={"GithubIcon"}
         />
       </footer>
-    </div>
+    </div>    </QueryClientProvider>
+
   );
 }
 
