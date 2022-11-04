@@ -13,7 +13,7 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
     <div>
       <h2 className={cx(s.title)}>{title}</h2>
       <span>Building: {building}</span>
-      <ul className={"flex list-none"}>
+      <ul className={"flex flex-wrap list-none"}>
         <span className={"flex justify-center items-center"}>
           Also known as
           <svg
@@ -33,11 +33,13 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
           :
         </span>
         {roomNames.map((name) => (
-          <li className={"m-1 px-2 rounded-xl bg-gray-300 font-medium"}>{name}</li>
+          <li className={"m-1 px-2 rounded-xl bg-gray-300 font-medium"} key={name}>
+            {name}
+          </li>
         ))}
       </ul>
     </div>
-    <div className={'flex items-center'}>
+    <div className={"flex items-center"}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
