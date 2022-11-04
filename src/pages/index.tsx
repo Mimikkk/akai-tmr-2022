@@ -5,9 +5,13 @@ import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
 import { Building } from "../models";
 import { BuildingService } from "../services/building.service";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { URLS } from "../urls.enum";
 
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
+  const { push } = useRouter();
   const [rooms, setRooms] = useState<Building[]>([]);
 
   const handleSearch = useCallback(
@@ -44,6 +48,9 @@ const App = () => {
               );
             })}
           </RoomsList>
+          <button onClick={() => push(URLS.AddRoom)} className="btn btn-primary">
+            Dodaj pokój
+          </button>
         </div>
       </div>
       <div className="bg-gray-700"></div>

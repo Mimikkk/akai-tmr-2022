@@ -4,13 +4,14 @@ $height: 1rem;
 $scaling-factor: 0.8;
 $input-y-offset: 1rem;
 $label-y-offset: -1.25rem;
-$font-size: 2.5rem;
+$font-size: 2.0rem;
 
 .container {
   @apply flex flex-grow relative;
   @apply transition-all;
   @apply bg-white border-2 border-slate-500;
   @apply rounded-2xl;
+  max-width: 500px;
 
   &:focus-within {
     @apply outline-8;
@@ -24,14 +25,12 @@ $font-size: 2.5rem;
 
   .input {
     @apply bg-transparent text-slate-500;
-    @apply w-full;
     @apply outline-0;
-    @apply px-4;
+    @apply px-1;
     @apply transition-all;
     @include s.truncate;
     line-height: normal;
     font-size: $font-size;
-    min-height: $font-size * 2;
 
     &:is(:hover, :focus) {
       @apply text-slate-900;
@@ -58,7 +57,6 @@ $font-size: 2.5rem;
 
   .input:placeholder-shown ~ .label {
     max-width: calc(100% - var(--height));
-
     transform: translate(6rem, $input-y-offset);
   }
 

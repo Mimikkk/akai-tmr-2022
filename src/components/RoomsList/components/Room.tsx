@@ -2,6 +2,7 @@ import cx from "classnames";
 import s from "./Room.module.scss";
 import { Icon } from "../../Icon";
 import Link from "next/link";
+import { URLS } from "../../../urls.enum";
 
 export interface RoomProps {
   title: string;
@@ -27,7 +28,7 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
         ))}
       </ul>
     </div>
-    <Link href={`room/${title}`}>
+    <Link href={`${URLS.Room}/${title}`}>
       <Icon
         name="ArrowRight"
         className={s.ar}
