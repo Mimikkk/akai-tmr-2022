@@ -1,8 +1,9 @@
-import { RoomsList, SearchField } from "../components";
+import { Icon, RoomsList, SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
+import s from "../components/RoomsList/components/Room.module.scss";
 import axios from "axios";
 import { Building } from "../models";
 

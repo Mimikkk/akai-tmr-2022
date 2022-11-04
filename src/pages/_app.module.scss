@@ -11,7 +11,7 @@
     @include s.centered;
     @apply h-full w-full;
     @apply flex-row;
-    @apply text-slate-500;
+    @apply text-gray-500;
 
     .title {
       font-size: 4rem;
@@ -23,6 +23,6 @@
     @include s.centered;
     @apply h-full w-full;
     @apply flex-row;
-    @apply text-slate-500;
+    @apply text-gray-500;
   }
 }
