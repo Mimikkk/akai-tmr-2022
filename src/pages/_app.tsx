@@ -36,7 +36,7 @@ const App = () => {
           <div>
             <RoomsList>
               {mockedRooms.map((room, index) => (
-                <Room key={index} title={room.title} roomNames={room.roomNames} building={room.building} />
+                <Room key={index} title={room.title} roomNames={room.roomNames} building={room.building} key={room.title} />
               ))}
             </RoomsList>
           </div>
