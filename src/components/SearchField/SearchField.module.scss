@@ -1,0 +1,54 @@
+@use 'styles/utils' as s;
+
+$height: 1rem;
+$scaling-factor: 0.8;
+
+.container {
+  @apply flex flex-grow;
+  @apply transition-all;
+}
+
+.input {
+  @apply w-full;
+  @apply border border-gray-500;
+  @apply rounded-sm px-4;
+  line-height: normal;
+  font-size: 1rem;
+  min-height: 2.25rem;
+  @apply transition-all;
+}
+
+.label {
+  @apply transition-all;
+  @apply origin-bottom-left absolute;
+  @apply rounded-sm cursor-text;
+  font-size: var(--font-size);
+  @include s.truncate;
+  @include s.capitalize-first;
+}
+
+.input:placeholder-shown ~ .label {
+  max-width: calc(100% - var(--height));
+
+  transform: translate(1rem, 0.5rem);
+}
+
+.input:not(:placeholder-shown) ~ .label,
+.input:focus ~ .label {
+  @apply bg-white text-slate-900 px-2;
+  max-width: calc(100% / $scaling-factor - var($height) / 2);
+
+  transform: translate(calc(0.2rem + 1px), -0.5rem) scale($scaling-factor);
+  line-height: normal;
+  animation: label-animation 0.2s ease-in-out forwards;
+
+  @keyframes label-animation {
+    50% {
+      opacity: 0;
+    }
+    to {
+      opacity: unset;
+      left: 1px;
+    }
+  }
+}
