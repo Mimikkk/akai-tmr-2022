@@ -2,6 +2,8 @@ import "../../styles/globals.css";
 import { RoomsList, SearchField } from "../components";
 import { useCallback, useEffect, useState } from "react";
 import { throttle } from "lodash-es";
+import { mockedRooms } from "../components/RoomsList/mockedRooms";
+import { Room } from "../components/RoomsList/components/Room";
 
 const SearchService = {
   search: async (query: string) => {
@@ -31,6 +33,13 @@ const App = () => {
       <div className={"h-full w-full p-4 bg-gray grid grid-cols-2"}>
         <div className="bg-gray-500 p-4">
           <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
+          <div>
+            <RoomsList>
+              {mockedRooms.map((room) => (
+                <Room title={room.title} roomNames={room.roomNames} building={room.building} />
+              ))}
+            </RoomsList>
+          </div>
         </div>
         <div className="bg-gray-300"></div>
       </div>
