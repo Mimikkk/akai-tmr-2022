@@ -6,9 +6,9 @@ const RoomPage = () => {
   const { id } = router.query;
 
   return (
-    <div>
+    <div className="max-w-lg">
       <p>Post: {id}</p>
-      <ImageWithDot src="/room-images/cw-level-0.png" dotX={100} dotY={100} />
+      <ImageWithDot src="/room-images/cw-level-0.png" dotX={100} dotY={200} />
     </div>
   );
 };

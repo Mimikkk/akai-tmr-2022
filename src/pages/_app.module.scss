@@ -4,7 +4,9 @@
   @apply w-screen h-screen;
   @apply bg-gray-900;
   @apply grid grid-cols-1 gap-x-2;
+  @apply justify-center;
   grid-template-rows: minmax(0, 2fr) minmax(0, 21fr) minmax(0, 1fr);
+
 
   .header {
     @include s.truncate;
@@ -17,6 +19,11 @@
       font-size: 4rem;
     }
   }
+
+  .main {
+    @apply flex justify-center;
+  }
+
 
   .footer {
     @include s.truncate;

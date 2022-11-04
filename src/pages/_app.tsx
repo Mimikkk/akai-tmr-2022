@@ -33,7 +33,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Icon name="ArrowRight" />
           <span className={s.title}>Jest zajebiście</span>
         </header>
-        <Component {...pageProps} />
+        <main className={s.main}>
+          <Component {...pageProps} />
+        </main>
         <footer className={s.footer}>
           <span>
             Aplikacja stworzona podczas hakatonu AKAI 2022 listopad 4-5
