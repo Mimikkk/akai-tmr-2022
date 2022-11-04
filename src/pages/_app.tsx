@@ -9,14 +9,20 @@ import { useWindowSize } from "react-use";
 function MyApp({ Component, pageProps }: AppProps) {
   const [showConfetti, toggleConfetti] = useState(false);
   const { width, height } = useWindowSize();
+  const [clickCount, setClickCount] = useState(0);
 
   return (
-    <div className={s.app} onClick={() => toggleConfetti(true)}>
-      {showConfetti && <Confetti width={width} height={height} />}
-      <span className={s.header}>
+    <div
+      className={s.app}
+      onClick={() => {
+        if (clickCount === 10) toggleConfetti(!showConfetti);
+        setClickCount(clickCount + 1);
+      }}
+    >
+      <header className={s.header}>
         <Icon name="ArrowRight" />
         <span className={s.title}>Jest zajebiście</span>
-      </span>
+      </header>
       <Component {...pageProps} />
       <footer>
         <span className={s.footer}>Aplikacja stworzona podczas hakatonu AKAI 2022 listopad 4-5</span>
