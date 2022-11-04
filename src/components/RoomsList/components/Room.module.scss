@@ -1,15 +1,25 @@
+@use 'styles/utils' as s;
+
 .content {
-  @apply p-3 m-2 rounded border flex justify-between bg-white;
-}
-
-.title {
-  @apply font-bold text-xl;
-}
-
-.arrow {
-  @apply flex justify-center items-center w-8 h-8 p-1 rounded;
+  @apply p-3 m-2 rounded border flex justify-between bg-slate-100;
+  @apply transition-all;
 
   &:hover {
-    @apply cursor-pointer bg-gray-300;
+    @apply bg-slate-200;
+  }
+
+  .title {
+    @apply font-bold text-xl;
+    @include s.capitalize-first;
+    @include s.truncate;
+  }
+
+  .arrow {
+    @apply flex justify-center items-center w-8 h-8 p-1 rounded;
+    @apply self-center justify-self-center;
+
+    &:hover {
+      @apply cursor-pointer bg-gray-300;
+    }
   }
 }
