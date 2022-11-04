@@ -2,6 +2,8 @@ import "../../styles/globals.css";
 import { RoomsList, SearchField } from "../components";
 import { useCallback, useEffect, useState } from "react";
 import { throttle } from "lodash-es";
+import { mockedRooms } from "../components/RoomsList/mockedRooms";
+import { Room } from "../components/RoomsList/components/Room";
 
 const SearchService = {
   search: async (query: string) => {
