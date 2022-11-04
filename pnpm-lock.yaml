@@ -21,6 +21,7 @@ specifiers:
   react: ^18.2.0
   react-confetti: ^6.1.0
   react-dom: ^18.2.0
+  react-hook-form: ^7.39.1
   react-use: ^17.4.0
   sass: ^1.55.0
   tailwindcss: ^3.2.1
@@ -38,6 +39,7 @@ dependencies:
   react: registry.npmjs.org/react/18.2.0
   react-confetti: registry.npmjs.org/react-confetti/6.1.0_react@18.2.0
   react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
+  react-hook-form: registry.npmjs.org/react-hook-form/7.39.1_react@18.2.0
   react-use: registry.npmjs.org/react-use/17.4.0_biqbaboplfbrettd7655fr4n2y
   zustand: registry.npmjs.org/zustand/4.1.4_react@18.2.0
 
@@ -53,7 +55,7 @@ devDependencies:
   postcss: registry.npmjs.org/postcss/8.4.18
   prettier: registry.npmjs.org/prettier/2.7.1
   sass: registry.npmjs.org/sass/1.56.0
-  tailwindcss: registry.npmjs.org/tailwindcss/3.2.2
+  tailwindcss: registry.npmjs.org/tailwindcss/3.2.2_postcss@8.4.18
   typescript: registry.npmjs.org/typescript/4.8.4
 
 packages:
@@ -760,7 +762,7 @@ packages:
       css-selector-tokenizer: registry.npmjs.org/css-selector-tokenizer/0.8.0
       postcss: registry.npmjs.org/postcss/8.4.18
       postcss-js: registry.npmjs.org/postcss-js/4.0.0_postcss@8.4.18
-      tailwindcss: registry.npmjs.org/tailwindcss/3.2.2
+      tailwindcss: registry.npmjs.org/tailwindcss/3.2.2_postcss@8.4.18
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -1509,6 +1511,18 @@ packages:
       scheduler: registry.npmjs.org/scheduler/0.23.0
     dev: false
 
+  registry.npmjs.org/react-hook-form/7.39.1_react@18.2.0:
+    resolution: {integrity: sha512-MiF9PCILN5KulhSGbnjohMiTOrB47GerDTichMNP0y2cPUu1GTRFqbunOxCE9N1499YTLMV/ne4gFzqCp1rxrQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.39.1.tgz}
+    id: registry.npmjs.org/react-hook-form/7.39.1
+    name: react-hook-form
+    version: 7.39.1
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: registry.npmjs.org/react/18.2.0
+    dev: false
+
   registry.npmjs.org/react-universal-interface/0.6.2_react@18.2.0+tslib@2.4.1:
     resolution: {integrity: sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/react-universal-interface/-/react-universal-interface-0.6.2.tgz}
     id: registry.npmjs.org/react-universal-interface/0.6.2
@@ -1818,12 +1832,15 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  registry.npmjs.org/tailwindcss/3.2.2:
+  registry.npmjs.org/tailwindcss/3.2.2_postcss@8.4.18:
     resolution: {integrity: sha512-c2GtSdqg+harR4QeoTmex0Ngfg8IIHNeLQH5yr2B9uZbZR1Xt1rYbjWOWTcj3YLTZhrmZnPowoQDbSRFyZHQ5Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.2.2.tgz}
+    id: registry.npmjs.org/tailwindcss/3.2.2
     name: tailwindcss
     version: 3.2.2
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: registry.npmjs.org/arg/5.0.2
       chokidar: registry.npmjs.org/chokidar/3.5.3
