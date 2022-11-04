@@ -13,7 +13,11 @@ const App = () => {
   const handleSearch = useCallback(
     throttle(async (query: string) => {
       try {
-        if (query.length < 2 || isSearching) return;
+        if (isSearching) return;
+        if (query.length < 2) {
+          setRooms([]);
+          return;
+        }
         toggleSearching(true);
         setRooms(await BuildingService.search(query));
       } finally {
@@ -26,7 +30,7 @@ const App = () => {
   return (
     <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
       <div className="bg-gray-800 p-4">
-        <SearchField onChange={handleSearch}>Wyszukaj mnie ;3</SearchField>
+        <SearchField onChange={handleSearch}>Wyszukaj salę</SearchField>
         <div>
           <RoomsList>
             {rooms.map((building, index) => {
