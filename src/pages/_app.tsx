@@ -32,7 +32,7 @@ const App = () => {
     <div className="bg-gray-900 w-screen h-screen">
       <div className={"h-full w-full p-4 bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
         <div className="bg-gray-800 p-4">
-          <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
+          <SearchField onChange={handleSearch}>Wyszukaj mnie ;3</SearchField>
           <div>
             <RoomsList>
               {mockData.rooms.map((room, index) => (
