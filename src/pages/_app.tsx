@@ -26,7 +26,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <footer className={s.footer}>
         <span>Aplikacja stworzona podczas hakatonu AKAI 2022 listopad 4-5</span>
-        <Icon className={'mx-2'} onClick={() => window.open("https://github.com/Mimikkk/akai-tmr-2022", "_blank")} name={"GithubIcon"} />
+        <Icon
+          className={"mx-2 hover:cursor-pointer"}
+          onClick={() => window.open("https://github.com/Mimikkk/akai-tmr-2022", "_blank")}
+          name={"GithubIcon"}
+        />
       </footer>
     </div>
   );
