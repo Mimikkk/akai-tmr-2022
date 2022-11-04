@@ -18,8 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <span className={s.title}>Jest zajebiście</span>
       </span>
       <Component {...pageProps} />
-      <footer>
+      <footer className={s.footer}>
         <span className={s.footer}>Aplikacja stworzona podczas hakatonu AKAI 2022 listopad 4-5</span>
+        <Icon onClick={() => window.open("https://github.com/Mimikkk/akai-tmr-2022", "_blank")} name={"GithubIcon"} />
       </footer>
     </div>
   );
