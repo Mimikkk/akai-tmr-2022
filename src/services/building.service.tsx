@@ -1,4 +1,5 @@
 import supabase from "../supabase";
+import { Building } from "../models";
 
 const toBuilding = ({ id, name, lat, lon }: any) => ({
   id: id,
@@ -8,6 +9,25 @@ const toBuilding = ({ id, name, lat, lon }: any) => ({
     longitude: lon,
   },
 });
+export const sortFn = <T, P>(
+  query: string,
+  options: Building[],
+): Building[] => {
+  const startsWith = [];
+  const included = [];
+
+  for (const option of options) {
+    const a = option.names[0].toLowerCase();
+    const b = query.toLowerCase();
+    if (a.startsWith(b)) {
+      startsWith.push(option);
+    } else if (a.includes(b)) {
+      included.push(option);
+    }
+  }
+
+  return startsWith.concat(included);
+};
 
 export const BuildingService = {
   readAll: async () => {
@@ -22,6 +42,6 @@ export const BuildingService = {
       .select("*")
       .ilike("name", `%${query}%`);
 
-    return data.map(toBuilding);
+    return sortFn(query, data.map(toBuilding));
   },
 };
