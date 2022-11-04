@@ -1,16 +1,33 @@
 import "../../styles/globals.css";
-import { Rooms } from "../components";
-import { Room } from "../components/RoomsList/components/Room";
-import { mockedRooms } from "../components/RoomsList/mockedRooms";
+import { SearchField } from "../components";
+import { useCallback, useEffect, useState } from "react";
+import { throttle } from "lodash-es";
 
 const App = () => {
+  const [query, setQuery] = useState("");
+  const [isSearching, toggleSearching] = useState(false);
+
+  const handleSearch = useCallback(
+    throttle((query: string) => {
+      try {
+        if (query.length < 2 || isSearching) return;
+        toggleSearching(true);
+
+        console.log("searching for", query);
+        setQuery(query);
+      } catch (e: any) {
+        toggleSearching(false);
+      }
+    }, 300),
+    [],
+  );
+
+  useEffect(() => {
+    console.log({ query });
+  }, [query]);
   return (
-    <div>
-      <Rooms>
-        {mockedRooms.map((room) => (
-          <Room title={room.title} roomNames={room.roomNames} building={room.building} />
-        ))}
-      </Rooms>
+    <div className="bg-gray-500 w-screen h-screen">
+      <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
     </div>
   );
 };

@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@faker-js/faker': ^7.6.0
   '@tanstack/react-query': ^4.14.3
+  '@types/lodash-es': ^4.17.6
   '@types/node': 18.11.9
   '@types/react': ^18.0.25
   '@types/react-dom': ^18.0.8
@@ -33,6 +34,7 @@ dependencies:
 
 devDependencies:
   '@faker-js/faker': registry.npmjs.org/@faker-js/faker/7.6.0
+  '@types/lodash-es': registry.npmjs.org/@types/lodash-es/4.17.6
   '@types/node': registry.npmjs.org/@types/node/18.11.9
   '@types/react': registry.npmjs.org/@types/react/18.0.25
   '@types/react-dom': registry.npmjs.org/@types/react-dom/18.0.8
@@ -263,6 +265,20 @@ packages:
       react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
       use-sync-external-store: registry.npmjs.org/use-sync-external-store/1.2.0_react@18.2.0
     dev: false
+
+  registry.npmjs.org/@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/lodash-es/-/lodash-es-4.17.6.tgz}
+    name: '@types/lodash-es'
+    version: 4.17.6
+    dependencies:
+      '@types/lodash': registry.npmjs.org/@types/lodash/4.14.188
+    dev: true
+
+  registry.npmjs.org/@types/lodash/4.14.188:
+    resolution: {integrity: sha512-zmEmF5OIM3rb7SbLCFYoQhO4dGt2FRM9AMkxvA3LaADOF1n8in/zGJlWji9fmafLoNyz+FoL6FE0SLtGIArD7w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/lodash/-/lodash-4.14.188.tgz}
+    name: '@types/lodash'
+    version: 4.14.188
+    dev: true
 
   registry.npmjs.org/@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-18.11.9.tgz}
