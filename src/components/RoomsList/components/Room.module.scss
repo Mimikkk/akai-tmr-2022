@@ -29,13 +29,4 @@
       }
     }
   }
-
-  .arrow {
-    @apply flex justify-center items-center w-8 h-8 p-1 rounded;
-    @apply self-center justify-self-center;
-
-    &:hover {
-      @apply cursor-pointer bg-gray-300;
-    }
-  }
 }

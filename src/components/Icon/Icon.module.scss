@@ -2,7 +2,7 @@
 
 .icon {
   @include s.centered('self');
-  @apply w-8 h-8 aspect-square;
+  @apply w-8 h-full aspect-square;
   @apply p-1 rounded-full;
   @apply transition-all;
 
