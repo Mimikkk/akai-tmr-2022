@@ -31,8 +31,15 @@ const App = () => {
   return (
     <div className="bg-gray-700 w-screen h-screen">
       <div className={"h-full w-full p-4 bg-gray grid grid-cols-2"}>
-        <div className="bg-gray-500">
+        <div>
           <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
+          <div>
+            <RoomsList>
+              {mockedRooms.map((room) => (
+                <Room title={room.title} roomNames={room.roomNames} building={room.building} />
+              ))}
+            </RoomsList>
+          </div>
         </div>
         <div className="bg-gray-300"></div>
       </div>
