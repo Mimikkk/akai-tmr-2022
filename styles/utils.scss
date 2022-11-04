@@ -1,0 +1,17 @@
+@mixin capitalize-first {
+  &::first-letter {
+    @apply uppercase;
+  }
+}
+
+@mixin centered {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+}
+
+@mixin truncate {
+  @apply overflow-hidden;
+  @apply whitespace-nowrap;
+  @apply text-ellipsis;
+}
