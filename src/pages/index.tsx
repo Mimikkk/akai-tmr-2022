@@ -3,13 +3,13 @@ import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
-import s from "../components/RoomsList/components/Room.module.scss";
 import axios from "axios";
 import { Building } from "../models";
 
+const mapData = <T,>(x: { data: T }): T => x.data;
 const SearchService = {
   search: (query: string): Promise<Building[]> =>
-    axios.get(`localhost:3000/api/buildings/${query}`).then((res) => res.data),
+    axios.get(`/api/buildings/search`, { params: { query } }).then(mapData),
 };
 
 const App = () => {
@@ -21,9 +21,8 @@ const App = () => {
       try {
         if (query.length < 2 || isSearching) return;
         toggleSearching(true);
-
         setRooms(await SearchService.search(query));
-      } catch (e: any) {
+      } finally {
         toggleSearching(false);
       }
     }, 300),
