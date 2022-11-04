@@ -27,8 +27,13 @@ const App = () => {
   );
 
   return (
-    <div className="bg-gray-500 w-screen h-screen">
-      <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
+    <div className="bg-gray-700 w-screen h-screen">
+      <div className={"h-full w-full p-4 bg-gray grid grid-cols-2"}>
+        <div className="bg-gray-500">
+          <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
+        </div>
+        <div className="bg-gray-300"></div>
+      </div>
     </div>
   );
 };
