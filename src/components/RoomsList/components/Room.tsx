@@ -1,6 +1,7 @@
 import cx from "classnames";
 import s from "./Room.module.scss";
 import { Icon } from "../../Icon";
+import Link from "next/link";
 
 export interface RoomProps {
   title: string;
@@ -26,12 +27,13 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
         ))}
       </ul>
     </div>
-    <Icon
-      name="ArrowRight"
-      className={s.arrow}
-      onClick={() => {
-        console.log("Clicked");
-      }}
-    />
+    <Link href={`room/${title}`}>
+      <Icon
+        name="ArrowRight"
+        onClick={() => {
+          console.log("Clicked");
+        }}
+      />
+    </Link>
   </li>
 );
