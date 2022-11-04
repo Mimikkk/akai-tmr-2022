@@ -35,8 +35,8 @@ const App = () => {
           <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
           <div>
             <RoomsList>
-              {mockedRooms.map((room) => (
-                <Room title={room.title} roomNames={room.roomNames} building={room.building} />
+              {mockedRooms.map((room, index) => (
+                <Room key={index} title={room.title} roomNames={room.roomNames} building={room.building} />
               ))}
             </RoomsList>
           </div>
