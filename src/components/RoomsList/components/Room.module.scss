@@ -1,7 +1,15 @@
 .content {
-  @apply p-2 m-2 rounded border;
+  @apply p-2 m-2 rounded border flex justify-between bg-white;
 }
 
 .title {
-  @apply font-bold;
+  @apply font-bold text-xl;
+}
+
+.arrow {
+  @apply flex justify-center items-center w-8 h-8 p-1 rounded;
+
+  &:hover {
+    @apply cursor-pointer bg-gray-300;
+  }
 }
