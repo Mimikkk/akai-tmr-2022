@@ -26,8 +26,6 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
         ))}
       </ul>
     </div>
-    <div className={"flex items-center"}>
-      <Icon name="ArrowRight" className={s.arrow} />
-    </div>
+    <Icon name="ArrowRight" className={s.arrow} />
   </li>
 );

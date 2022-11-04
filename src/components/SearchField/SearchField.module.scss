@@ -14,6 +14,8 @@ $font-size: 2.5rem;
 
   &:focus-within {
     @apply outline-8;
+    @apply bg-slate-50;
+
     .icon {
       @apply border-slate-900;
     }
@@ -21,6 +23,7 @@ $font-size: 2.5rem;
 
   &:is(:hover, :focus-within) {
     @apply border-slate-900;
+    @apply bg-slate-50;
   }
 
   .input {
