@@ -16,13 +16,13 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
     if (!canvasRef.current) return;
     const context = canvasRef.current.getContext("2d");
     if (!context) return;
-    context.fillStyle = "blue";
+
     const img = new Image();
     img.src = src;
     img.onload = () => {
       context.canvas.height = img.height;
       context.canvas.width = img.width;
-      context.drawImage(img, 0, 0);
+      context.drawImage(img, 0, 0, context.canvas.width, context.canvas.height);
 
       // draw a circle
       context.fillStyle = dotColor;
@@ -32,5 +32,5 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
     };
   }, [canvasRef]);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas className="block w-full" ref={canvasRef} />;
 };
