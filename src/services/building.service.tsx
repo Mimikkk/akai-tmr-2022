@@ -55,6 +55,7 @@ export const BuildingService = {
       .select(`*, buildingNames(name), buildingShortNames(name), rooms(id, x, y, level)`)
       .ilike("name", `%${query}%`);
 
+    console.log("hihi");
     return sortFn(query, data.map(toBuilding));
   },
 };
