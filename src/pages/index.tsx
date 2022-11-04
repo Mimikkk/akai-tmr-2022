@@ -3,15 +3,17 @@ import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
+import axios from "axios";
+import { Building } from "../models";
 
 const SearchService = {
-  search: async (query: string) => {
-    return [];
-  },
+  search: (query: string): Promise<Building[]> =>
+    axios.get(`localhost:3000/api/buildings/${query}`).then((res) => res.data),
 };
+
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState<Building[]>([]);
 
   const handleSearch = useCallback(
     throttle(async (query: string) => {
@@ -33,14 +35,16 @@ const App = () => {
         <SearchField onChange={handleSearch}>Wyszukaj mnie ;3</SearchField>
         <div>
           <RoomsList>
-            {mockData.rooms.map((room, index) => (
-              <Room
-                key={index}
-                title={room.names[0]}
-                roomNames={room.names.slice(1)}
-                building={mockData.buildings.find((building) => room.buildingId === building.id)!.names.join(", ")}
-              />
-            ))}
+            {rooms.map((building, index) => {
+              return (
+                <Room
+                  key={index}
+                  title={building.names[0]}
+                  roomNames={building.names.slice(1)}
+                  building={mockData.buildings.find((building) => building.id === building.id)!.names.join(", ")}
+                />
+              );
+            })}
           </RoomsList>
         </div>
       </div>
