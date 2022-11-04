@@ -42,20 +42,20 @@ export const sortFn = <T, P>(query: string, options: Building[]): Building[] => 
 
 export const BuildingService = {
   readAll: async () => {
-    const { data, error }: any = await supabase
+    const { data: buildings, error }: any = await supabase
       .from("buildings")
       .select(`*, buildingNames(name), buildingShortNames(name), rooms(id, x, y, level)`);
     if (error) throw error;
-    return data.map(toBuilding);
+    return buildings.map(toBuilding);
   },
 
   search: async (query: string) => {
-    const { data }: any = await supabase
+    const { data: buildings }: any = await supabase
       .from("buildings")
       .select(`*, buildingNames(name), buildingShortNames(name), rooms(id, x, y, level)`)
       .ilike("name", `%${query}%`);
 
     console.log("hihi");
-    return sortFn(query, data.map(toBuilding));
+    return sortFn(query, buildings.map(toBuilding));
   },
 };

@@ -16,19 +16,28 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
     if (!canvasRef.current) return;
     const context = canvasRef.current.getContext("2d");
     if (!context) return;
+    const canvas = context.canvas;
 
     const img = new Image();
     img.src = src;
     img.onload = () => {
-      context.canvas.height = img.height;
-      context.canvas.width = img.width;
-      context.drawImage(img, 0, 0, context.canvas.width, context.canvas.height);
+      canvas.height = img.height;
+      canvas.width = img.width;
+      context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       // draw a circle
       context.fillStyle = dotColor;
       context.beginPath();
       context.arc(dotX, dotY, dotRadius, 0, 2 * Math.PI);
       context.fill();
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const elementRelativeX = e.clientX - rect.left;
+        const elementRelativeY = e.clientY - rect.top;
+        const canvasRelativeX = (elementRelativeX * canvas.width) / rect.width;
+        const canvasRelativeY = (elementRelativeY * canvas.height) / rect.height;
+        console.log(canvasRelativeX, canvasRelativeY);
+      });
     };
   }, [canvasRef]);
 

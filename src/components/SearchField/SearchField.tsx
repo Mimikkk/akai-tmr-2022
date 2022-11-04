@@ -1,6 +1,5 @@
 import s from "./SearchField.module.scss";
 import { ChangeEvent, FC, PropsWithChildren, useCallback, useId } from "react";
-import cx from "classnames";
 import { Icon } from "../Icon";
 
 interface SearchFieldProps extends PropsWithChildren {
