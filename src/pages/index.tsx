@@ -39,9 +39,7 @@ const App = () => {
                   key={index}
                   title={room.names[0]}
                   roomNames={room.names.slice(1)}
-                  building={mockData.buildings
-                    .filter((building) => room.buildingId === building.id)[0]
-                    .names.join(", ")}
+                  building={mockData.buildings.find((building) => room.buildingId === building.id)!.names.join(", ")}
                 />
               ))}
             </RoomsList>
