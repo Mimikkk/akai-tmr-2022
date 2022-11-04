@@ -1,4 +1,4 @@
-@use 'styles/utils' as s;
+@use "styles/utils" as s;
 
 .content {
   @apply p-3 m-2 rounded border flex justify-between bg-slate-100;
