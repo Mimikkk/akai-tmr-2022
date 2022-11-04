@@ -1,18 +1,29 @@
 import supabase from "../supabase";
-import { Building } from "../models";
+import { Building, Room } from "../models";
+import { map } from "lodash-es";
 
-const toBuilding = ({ id, name, lat, lon }: any) => ({
-  id: id,
-  names: [name],
+const toBuilding = ({
+  id,
+  defaultName,
+  buildingNames,
+  buildingShortNames,
+  latitude,
+  longitude,
+  rooms,
+  roomNames,
+}: any): Building => ({
+  id,
+  rooms,
+  defaultName,
+  names: map(buildingNames, "name"),
+  shortNames: map(buildingShortNames, "name"),
   geolocation: {
-    latitude: lat,
-    longitude: lon,
+    latitude: latitude,
+    longitude: longitude,
   },
 });
-export const sortFn = <T, P>(
-  query: string,
-  options: Building[],
-): Building[] => {
+
+export const sortFn = <T, P>(query: string, options: Building[]): Building[] => {
   const startsWith = [];
   const included = [];
 
@@ -31,23 +42,20 @@ export const sortFn = <T, P>(
 
 export const BuildingService = {
   readAll: async () => {
-    const { data, error }: any = await supabase
+    const { data: buildings, error }: any = await supabase
       .from("buildings")
-      .select(
-        `*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`,
-      );
+      .select(`*, buildingNames(name), buildingShortNames(name), rooms(id, x, y, level)`);
     if (error) throw error;
-    return data.map(toBuilding);
+    return buildings.map(toBuilding);
   },
 
   search: async (query: string) => {
-    const { data }: any = await supabase
+    const { data: buildings }: any = await supabase
       .from("buildings")
-      .select(
-        `*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`,
-      )
+      .select(`*, buildingNames(name), buildingShortNames(name), rooms(id, x, y, level)`)
       .ilike("name", `%${query}%`);
 
-    return sortFn(query, data.map(toBuilding));
+    console.log("hihi");
+    return sortFn(query, buildings.map(toBuilding));
   },
 };
