@@ -8,13 +8,17 @@ $scaling-factor: 0.8;
   @apply transition-all;
 
   .input {
-    @apply w-full;
+    @apply bg-white text-slate-500;
     @apply border border-gray-500;
+    @apply w-full;
     @apply rounded-sm px-4;
+    @apply transition-all;
     line-height: normal;
     font-size: 1rem;
     min-height: 2.25rem;
-    @apply transition-all;
+    &:is(:hover, :focus) {
+      @apply text-slate-900;
+    }
   }
 
   .label {
@@ -24,6 +28,11 @@ $scaling-factor: 0.8;
     font-size: var(--font-size);
     @include s.truncate;
     @include s.capitalize-first;
+    @apply text-slate-500;
+
+    &:is(:hover, :focus) {
+      @apply text-slate-900;
+    }
   }
 
   .input:placeholder-shown ~ .label {
@@ -31,7 +40,6 @@ $scaling-factor: 0.8;
 
     transform: translate(1rem, 0.5rem);
   }
-  @apply bg-white text-slate-500;
 
   .input:not(:placeholder-shown) ~ .label, .input:focus ~ .label {
     @apply text-slate-900 px-2;
