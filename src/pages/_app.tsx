@@ -1,9 +1,9 @@
 import "../../styles/globals.css";
 import { RoomsList, SearchField } from "../components";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
-import { mockedRooms } from "../components/RoomsList/mockedRooms";
 import { Room } from "../components/RoomsList/components/Room";
+import mockData from "../mock-data";
 
 const SearchService = {
   search: async (query: string) => {
@@ -35,8 +35,15 @@ const App = () => {
           <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
           <div>
             <RoomsList>
-              {mockedRooms.map((room, index) => (
-                <Room key={index} title={room.title} roomNames={room.roomNames} building={room.building} />
+              {mockData.rooms.map((room, index) => (
+                <Room
+                  key={index}
+                  title={room.names[0]}
+                  roomNames={room.names.slice(1)}
+                  building={mockData.buildings
+                    .filter((building) => room.buildingId === building.id)[0]
+                    .names.join(", ")}
+                />
               ))}
             </RoomsList>
           </div>
