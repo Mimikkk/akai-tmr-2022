@@ -11,7 +11,7 @@ const toBuilding = ({ id, name, lat, lon }: any) => ({
 
 export const BuildingService = {
   readAll: async () => {
-    const { data, error } = await supabase.from("buildings").select();
+    const { data, error }: any = await supabase.from("buildings").select();
     if (error) throw error;
     return data.map(toBuilding);
   },
