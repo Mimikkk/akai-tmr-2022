@@ -28,11 +28,7 @@ const App = () => {
   );
 
   return (
-    <div
-      className={
-        "h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"
-      }
-    >
+    <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
       <div className="bg-gray-800 p-4">
         <SearchField onChange={handleSearch}>Wyszukaj salę</SearchField>
         <div>
@@ -41,11 +37,9 @@ const App = () => {
               return (
                 <Room
                   key={index}
-                  title={building.names[0]}
-                  roomNames={building.names.slice(1)}
-                  building={mockData.buildings
-                    .find((building) => building.id === building.id)!
-                    .names.join(", ")}
+                  title={building.defaultName}
+                  roomNames={building.rooms.map((room) => room.names.join(","))}
+                  building={mockData.buildings.find((building) => building.id === building.id)!.names.join(", ")}
                 />
               );
             })}
