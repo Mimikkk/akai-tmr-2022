@@ -32,8 +32,29 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm"
   },
+  "type": "module",
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "@tanstack/react-query": "^4.14.3",
+    "axios": "^1.1.3",
+    "zustand": "^4.1.4"
+  },
   "devDependencies": {
+    "tailwindcss": "^3.2.1",
+    "daisyui": "^2.38.0",
+    "@faker-js/faker": "^7.5.0",
+    "sass": "^1.55.0",
+    "postcss": "^8.4.18",
+    "typescript": "^4.8.4",
     "concurrently": "^7.5.0",
-    "@types/node": "18.11.9"
+    "@types/node": "18.11.9",
+    "prettier": "^2.7.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "semi": true,
+    "endOfLine": "crlf",
+    "trailingComma": "all"
   }
 }
