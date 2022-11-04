@@ -47,6 +47,7 @@
     "zustand": "^4.1.4"
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
     "@faker-js/faker": "^7.6.0",
     "@types/node": "18.11.9",
     "@types/react": "^18.0.25",

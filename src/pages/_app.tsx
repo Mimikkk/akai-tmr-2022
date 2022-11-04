@@ -1,5 +1,5 @@
 import "../../styles/globals.css";
-import { SearchField } from "../components";
+import { RoomsList, SearchField } from "../components";
 import { useCallback, useEffect, useState } from "react";
 import { throttle } from "lodash-es";
 
@@ -8,7 +8,6 @@ const SearchService = {
     return [];
   },
 };
-
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
   const [rooms, setRooms] = useState([]);

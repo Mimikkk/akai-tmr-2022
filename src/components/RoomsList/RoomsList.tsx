@@ -6,6 +6,6 @@ interface Props {
   className?: string;
 }
 
-export const Rooms: FC<Props> = ({ className, children }) => {
-  return <ul className={cx(s.list,className)}>{children}</ul>;
+export const RoomsList: FC<Props> = ({ className, children }) => {
+  return <ul className={cx(s.list, className)}>{children}</ul>;
 };
