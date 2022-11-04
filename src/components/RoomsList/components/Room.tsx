@@ -30,6 +30,7 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
     <Link href={`room/${title}`}>
       <Icon
         name="ArrowRight"
+        className={s.ar}
         onClick={() => {
           console.log("Clicked");
         }}
