@@ -24,7 +24,7 @@ export const SearchField: FC<SearchFieldProps> = (props) => {
         placeholder=" "
       />
       <label htmlFor={id} id={`${id}-label`} className={s.label}>
-        123123
+        {props?.children}
       </label>
     </div>
   );
