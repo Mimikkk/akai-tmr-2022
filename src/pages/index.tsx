@@ -28,25 +28,23 @@ const App = () => {
   );
 
   return (
-    <div className="bg-gray-900 w-screen h-screen">
-      <div className={"h-full w-full p-4 bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
-        <div className="bg-gray-800 p-4">
-          <SearchField onChange={handleSearch}>Wyszukaj mnie ;3</SearchField>
-          <div>
-            <RoomsList>
-              {mockData.rooms.map((room, index) => (
-                <Room
-                  key={index}
-                  title={room.names[0]}
-                  roomNames={room.names.slice(1)}
-                  building={mockData.buildings.find((building) => room.buildingId === building.id)!.names.join(", ")}
-                />
-              ))}
-            </RoomsList>
-          </div>
+    <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
+      <div className="bg-gray-800 p-4">
+        <SearchField onChange={handleSearch}>Wyszukaj mnie ;3</SearchField>
+        <div>
+          <RoomsList>
+            {mockData.rooms.map((room, index) => (
+              <Room
+                key={index}
+                title={room.names[0]}
+                roomNames={room.names.slice(1)}
+                building={mockData.buildings.find((building) => room.buildingId === building.id)!.names.join(", ")}
+              />
+            ))}
+          </RoomsList>
         </div>
-        <div className="bg-gray-700"></div>
       </div>
+      <div className="bg-gray-700"></div>
     </div>
   );
 };

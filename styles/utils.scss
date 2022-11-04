@@ -4,7 +4,7 @@
   }
 }
 
-@mixin centered($self) {
+@mixin centered($self: false) {
   @if $self == 'self' {
     @apply self-center;
     @apply justify-self-center;

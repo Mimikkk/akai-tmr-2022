@@ -1,0 +1,28 @@
+@use 'styles/utils' as s;
+
+.app {
+  @apply w-screen h-screen;
+  @apply bg-gray-900;
+  @apply grid grid-cols-1 gap-x-2;
+  grid-template-rows: minmax(0, 2fr) minmax(0, 21fr) minmax(0, 1fr);
+
+  .header {
+    @include s.truncate;
+    @include s.centered;
+    @apply h-full w-full;
+    @apply flex-row;
+    @apply text-slate-500;
+
+    .title {
+      font-size: 4rem;
+    }
+  }
+
+  .footer {
+    @include s.truncate;
+    @include s.centered;
+    @apply h-full w-full;
+    @apply flex-row;
+    @apply text-slate-500;
+  }
+}
