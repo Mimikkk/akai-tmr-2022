@@ -1,4 +1,3 @@
-// import "../../styles/globals.css";
 import { RoomsList, SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
