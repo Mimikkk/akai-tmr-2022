@@ -36,16 +36,14 @@ const App = () => {
         <SearchField onChange={handleSearch}>Wyszukaj salę</SearchField>
         <div>
           <RoomsList>
-            {building.map((building, index) => {
-              return (
-                <Room
-                  key={index}
-                  title={building.defaultName}
-                  roomNames={building.rooms.map((room) => room.names.join(","))}
-                  building={mockData.buildings.find((building) => building.id === building.id)!.names.join(", ")}
-                />
-              );
-            })}
+            {building.map((building, index) => (
+              <Room
+                key={index}
+                title={building.displayName}
+                roomNames={building.rooms.map((room) => room.name)}
+                building={mockData.buildings.find((building) => building.id === building.id)!.names.join(", ")}
+              />
+            ))}
           </RoomsList>
           <button onClick={() => push(URLS.AddRoom)} className="btn btn-primary">
             Dodaj pokój

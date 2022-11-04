@@ -31,23 +31,14 @@ export const sortFn = <T, P>(
 
 export const BuildingService = {
   readAll: async () => {
-    const { data, error }: any = await supabase
-      .from("buildings")
-      .select(
-        `*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`,
-      );
+    const { data: buildings, error }: any = await supabase.from("buildings").select(`*`);
     if (error) throw error;
-    return data.map(toBuilding);
+    return buildings.map(toBuilding);
   },
 
   search: async (query: string) => {
-    const { data }: any = await supabase
-      .from("buildings")
-      .select(
-        `*, buildingNames(buildingName), buildingShortNames(shortName), rooms(x, y, level)`,
-      )
-      .ilike("name", `%${query}%`);
+    const { data: buildings }: any = await supabase.from("buildings").select(`*`).ilike("name", `%${query}%`);
 
-    return sortFn(query, data.map(toBuilding));
+    return sortFn(query, buildings.map(toBuilding));
   },
 };
