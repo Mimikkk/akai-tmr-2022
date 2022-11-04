@@ -1,0 +1,16 @@
+@use 'styles/utils' as s;
+
+.icon {
+  @include s.centered('self');
+  @apply w-8 h-8 aspect-square;
+  @apply p-1 rounded-full;
+  @apply transition-all;
+
+  &:hover {
+    @apply bg-gray-300;
+  }
+
+  &.clickable {
+    @apply cursor-pointer;
+  }
+}

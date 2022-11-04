@@ -14,18 +14,24 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
     <div>
       <h2 className={cx(s.title)}>{title}</h2>
       <span>Building: {building}</span>
-      <ul className={"flex list-none flex-wrap"}>
-        <span className={"flex justify-center items-center gap-2"}>
+      <ul className={s.rooms}>
+        <span className={s.room}>
           Also known as
-          <Icon name="QuestionCircle" className={"w-6 h-6"} />:
+          <Icon name="QuestionCircle" />:
         </span>
         {roomNames.map((name) => (
-          <li key={name} className={"m-1 px-2 rounded-xl bg-gray-300 font-medium"}>
+          <li key={name} className={s.chip}>
             {name}
           </li>
         ))}
       </ul>
     </div>
-    <Icon name="ArrowRight" className={s.arrow} />
+    <Icon
+      name="ArrowRight"
+      className={s.arrow}
+      onClick={() => {
+        console.log("Clicked");
+      }}
+    />
   </li>
 );

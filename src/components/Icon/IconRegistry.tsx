@@ -10,7 +10,7 @@ const Magnifier = (props: IconProps) => (
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    className={cx("w-6 h-6", props?.className)}
+    {...props}
   >
     <path
       stroke-linecap="round"

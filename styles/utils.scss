@@ -4,10 +4,15 @@
   }
 }
 
-@mixin centered {
-  @apply flex;
-  @apply items-center;
-  @apply justify-center;
+@mixin centered($self) {
+  @if $self == 'self' {
+    @apply self-center;
+    @apply justify-self-center;
+  } @else {
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+  }
 }
 
 @mixin truncate {
