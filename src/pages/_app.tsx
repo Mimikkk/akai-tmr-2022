@@ -3,18 +3,23 @@ import { SearchField } from "../components";
 import { useCallback, useEffect, useState } from "react";
 import { throttle } from "lodash-es";
 
+const SearchService = {
+  search: async (query: string) => {
+    return [];
+  },
+};
+
 const App = () => {
-  const [query, setQuery] = useState("");
   const [isSearching, toggleSearching] = useState(false);
+  const [rooms, setRooms] = useState([]);
 
   const handleSearch = useCallback(
-    throttle((query: string) => {
+    throttle(async (query: string) => {
       try {
         if (query.length < 2 || isSearching) return;
         toggleSearching(true);
 
-        console.log("searching for", query);
-        setQuery(query);
+        setRooms(await SearchService.search(query));
       } catch (e: any) {
         toggleSearching(false);
       }
@@ -22,9 +27,6 @@ const App = () => {
     [],
   );
 
-  useEffect(() => {
-    console.log({ query });
-  }, [query]);
   return (
     <div className="bg-gray-500 w-screen h-screen">
       <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
