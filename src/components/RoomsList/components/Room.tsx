@@ -14,7 +14,7 @@ export const Room = ({ title, roomNames, building, className }: RoomProps) => (
     <div>
       <h2 className={cx(s.title)}>{title}</h2>
       <span>Building: {building}</span>
-      <ul className={"flex list-none"}>
+      <ul className={"flex list-none flex-wrap"}>
         <span className={"flex justify-center items-center gap-2"}>
           Also known as
           <Icon name="QuestionCircle" className={"w-6 h-6"} />:

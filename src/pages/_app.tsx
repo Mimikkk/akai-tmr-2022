@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="bg-gray-700 w-screen h-screen">
-      <div className={"h-full w-full p-4 bg-gray grid grid-cols-2"}>
+      <div className={"h-full w-full p-4 bg-gray grid grid-cols-1 md:grid-cols-2"}>
         <div className="bg-gray-500 p-4">
           <SearchField onChange={handleSearch}>Wyszukaj mnie :3 uwu</SearchField>
           <div>
