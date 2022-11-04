@@ -3,15 +3,8 @@ import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
-import axios from "axios";
 import { Building } from "../models";
 import { BuildingService } from "../services/building.service";
-
-const mapData = <T,>(x: { data: T }): T => x.data;
-const SearchService = {
-  search: (query: string): Promise<Building[]> =>
-    axios.get(`/api/buildings/search`, { params: { query } }).then(mapData),
-};
 
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
@@ -22,15 +15,13 @@ const App = () => {
       try {
         if (query.length < 2 || isSearching) return;
         toggleSearching(true);
-        setRooms(await SearchService.search(query));
+        setRooms(await BuildingService.search(query));
       } finally {
         toggleSearching(false);
       }
     }, 300),
     [],
   );
-
-  BuildingService.getAll();
 
   return (
     <div
@@ -49,8 +40,8 @@ const App = () => {
                   title={building.names[0]}
                   roomNames={building.names.slice(1)}
                   building={mockData.buildings
-                  .find((building) => building.id === building.id)!
-                  .names.join(", ")}
+                    .find((building) => building.id === building.id)!
+                    .names.join(", ")}
                 />
               );
             })}
