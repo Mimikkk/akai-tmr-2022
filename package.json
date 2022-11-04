@@ -1,0 +1,39 @@
+{
+  "version": "0.0.0",
+  "description": "Hackathn AKAI",
+  "contributors": [
+    {
+      "name": "Daniel Zdancewicz",
+      "email": "zdancewicz.daniel@gmail.com",
+      "url": "https://www.github.com/Mimikk"
+    },
+    {
+      "name": "Dominik Kostecki",
+      "url": "https://www.github.com/kostekd"
+    },
+    {
+      "name": "Filip Sauer",
+      "email": "sauer.filip@gmail.com",
+      "url": "https://www.github.com/srflp"
+    },
+    {
+      "name": "Krzysztof Jerzyk",
+      "url": "https://www.github.com/jerzor"
+    },
+    {
+      "name": "Ryszard Poznański",
+      "url": "https://www.github.com/ryszard-put"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mimikkk/akai-tmr-2022.git"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0",
+    "@types/node": "18.11.9"
+  }
+}
