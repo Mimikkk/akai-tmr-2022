@@ -1,9 +1,9 @@
-import { Icon, RoomsList, SearchField } from "../components";
+import { RoomsList, SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
-import s from "../components/RoomsList/components/Room.module.scss";
+import { BuildingService } from "../services/building.service";
 
 const SearchService = {
   search: async (query: string) => {
@@ -28,8 +28,14 @@ const App = () => {
     [],
   );
 
+  BuildingService.getAll();
+
   return (
-    <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
+    <div
+      className={
+        "h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"
+      }
+    >
       <div className="bg-gray-800 p-4">
         <SearchField onChange={handleSearch}>Wyszukaj mnie ;3</SearchField>
         <div>
@@ -39,7 +45,9 @@ const App = () => {
                 key={index}
                 title={room.names[0]}
                 roomNames={room.names.slice(1)}
-                building={mockData.buildings.find((building) => room.buildingId === building.id)!.names.join(", ")}
+                building={mockData.buildings
+                  .find((building) => room.buildingId === building.id)!
+                  .names.join(", ")}
               />
             ))}
           </RoomsList>
