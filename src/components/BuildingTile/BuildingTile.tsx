@@ -9,12 +9,11 @@ interface BuildingProps {
 
 export const BuildingTile = ({ building }: BuildingProps) => (
   <div className={s.tile}>
-    <span className={s.title}>{building.displayName}</span>
-    <RoomsList>
+    <RoomsList className="flex flex-col gap-3">
+      <span className={s.title}>{building.displayName}</span>
       {building.rooms.map((room) => (
         <RoomCard key={room.id} room={room} />
       ))}
-
       <AddNewRoomCard name={building.displayName} id={building.id} />
     </RoomsList>
   </div>

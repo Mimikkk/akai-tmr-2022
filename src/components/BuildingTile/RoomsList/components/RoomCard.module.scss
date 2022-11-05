@@ -2,7 +2,7 @@
 
 .content {
   @apply text-gray-600;
-  @apply p-3 m-2 rounded border flex justify-between bg-slate-100;
+  @apply p-3 rounded border flex justify-between bg-slate-100;
   @apply transition-all;
 
   .vote {

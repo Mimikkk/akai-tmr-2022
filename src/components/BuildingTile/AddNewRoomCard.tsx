@@ -10,10 +10,10 @@ interface Props {
 export const AddNewRoomCard = ({ id, name }: Props) => (
   <Link href={{ pathname: "room/add", query: { buildingId: id, buildingName: name } }}>
     <div className={s.card}>
-      <label htmlFor={"add-new"} className={"cursor-pointer"}>
-        Dodaj nową sale
+      <label htmlFor="add-new" className="cursor-pointer">
+        Dodaj nową salę
       </label>
-      <Icon name={"ArrowRight"} id={"add-new"} />
+      <Icon name="ArrowRight" id="add-new" />
     </div>
   </Link>
 );

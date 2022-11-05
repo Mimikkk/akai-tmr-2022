@@ -1,7 +1,7 @@
 @use 'styles/utils' as s;
 
 .tile {
-  @apply bg-gray-800 justify-center items-center rounded p-2;
+  @apply bg-gray-800 justify-center items-center rounded p-3;
 
   .title {
     @apply transition-all;
