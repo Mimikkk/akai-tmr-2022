@@ -14,7 +14,8 @@ export const BuildingTile = ({ building }: BuildingProps) => (
       {building.rooms.map((room) => (
         <RoomCard key={room.id} room={room} />
       ))}
-      <AddNewRoomCard />
+
+      <AddNewRoomCard name={building.displayName} id={building.id} />
     </RoomsList>
   </div>
 );
