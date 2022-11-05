@@ -19,8 +19,7 @@ export const RoomCard = ({ room, building, className }: RoomProps) => (
       <Icon name={"Minus"} className={s.downvote} />
     </div>
     <div>
-      <h2 className={cx(s.title)}>{room.name}</h2>
-      <span>W budynku: {building.displayName}</span>
+      <h2 className={cx(s.title)}>Nazwa sali: {room.name}</h2>
       <ul className={s.rooms}>
         <span className={s.room}>
           Też znana jako
