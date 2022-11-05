@@ -1,4 +1,4 @@
-import { BuildingTile, TextField } from "../components";
+import { BuildingTile, Icon, TextField } from "../components";
 import { useState } from "react";
 import { Building } from "../models";
 import { BuildingService } from "../services";
@@ -45,7 +45,12 @@ const App = () => {
           </div>
           <div className={cx(s.items, "flex flex-col gap-2")}>
             {isLoading ? null : (!buildings || buildings?.length === 0) && query.length > 2 ? (
-              <div className={cx(buildingTileStyles.tile, "dark:text-slate-50 p-4 bg-gray-500")}>
+              <div
+                className={cx(
+                  buildingTileStyles.tile,
+                  "text-slate-800 dark:text-slate-50 font-bold p-4 bg-gray-300 dark:bg-gray-500",
+                )}
+              >
                 Nie znaleźliśmy takiej sali lub budynku.
               </div>
             ) : (
