@@ -6,7 +6,7 @@ interface ImageWithPointProps {
   dotY: number;
 }
 
-const dotRadius = 50;
+// const dotRadius = 50;
 const dotColor = "#ff0000";
 
 export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
@@ -24,7 +24,7 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
       canvas.height = img.height;
       canvas.width = img.width;
       context.drawImage(img, 0, 0, canvas.width, canvas.height);
-
+      const dotRadius = Math.floor((0.03 * (img.height + img.width)) / 2);
       // draw a circle
       context.fillStyle = dotColor;
       context.beginPath();
@@ -43,3 +43,4 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
 
   return <canvas className="block w-full" ref={canvasRef} />;
 };
+
