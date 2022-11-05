@@ -1,8 +1,7 @@
 export interface Room {
+  id: string;
   name: string;
+  aliases: string[];
   x: number;
   y: number;
-  level: number;
-  buildingId: string;
-  alternativeNames: string[];
 }

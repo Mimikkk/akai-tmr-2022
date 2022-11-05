@@ -1,3 +1,5 @@
+import { Room } from "./room";
+
 export interface Building {
   id: string;
   name: string;
@@ -6,12 +8,4 @@ export interface Building {
   latitude: string;
   longitude: string;
   rooms: Room[];
-}
-
-export interface Room {
-  id: string;
-  name: string;
-  aliases: string[];
-  x: number;
-  y: number;
 }
