@@ -6,6 +6,8 @@ import s from "./index.module.scss";
 import cx from "classnames";
 import { useDebounce } from "react-use";
 import { useQuery } from "@tanstack/react-query";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -13,6 +15,7 @@ const App = () => {
   const { data: buildings, isLoading } = useQuery<Building[]>(["buildings", query], () =>
     BuildingService.search(query),
   );
+  const { height, width } = useWindowSize();
 
   useDebounce(
     () => {
@@ -23,24 +26,27 @@ const App = () => {
   );
 
   return (
-    <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded"}>
-      <div className={cx(s.items, "bg-gray-800 p-4 h-full overflow-hidden flex flex-col gap-2")}>
-        <div>
-          <TextField onChange={(event) => setFormData(event.target.value)} icon={"Magnifier"}>
-            Wyszukaj salę
-          </TextField>
-        </div>
-        <div className={cx(s.items, "flex flex-col gap-2")}>
-          {isLoading || !buildings ? null : (
-            <>
-              {buildings.map((building) => (
-                <BuildingTile building={building} key={building.id} />
-              ))}
-            </>
-          )}
+    <>
+      {buildings?.length && <Confetti width={width} height={height} />}
+      <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded"}>
+        <div className={cx(s.items, "bg-gray-800 p-4 h-full overflow-hidden flex flex-col gap-2")}>
+          <div>
+            <TextField onChange={(event) => setFormData(event.target.value)} icon={"Magnifier"}>
+              Wyszukaj salę
+            </TextField>
+          </div>
+          <div className={cx(s.items, "flex flex-col gap-2")}>
+            {isLoading || !buildings ? null : (
+              <>
+                {buildings.map((building) => (
+                  <BuildingTile building={building} key={building.id} />
+                ))}
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
