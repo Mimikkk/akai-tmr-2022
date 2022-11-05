@@ -11,7 +11,7 @@ const RoomPage = () => {
   const { data, isLoading } = useQuery(["room", id], () => id && RoomService.read(id as string));
 
   const { data: urlData } = data
-    ? supabase.storage.from("mapa-pp").getPublicUrl(`levels/${data.buildings.name}-level-${data.level}.png`)
+    ? supabase.storage.from("mapa-pp").getPublicUrl(`${data.buildings.name}/${data.level}.png`)
     : { data: undefined };
 
   return (
