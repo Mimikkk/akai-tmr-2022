@@ -1,38 +1,26 @@
-import { ChangeEvent, FC, PropsWithChildren, useCallback, useId } from "react";
+import { ChangeEvent, FC, InputHTMLAttributes, PropsWithChildren, useCallback, useId } from "react";
 import s from "./TextField.module.scss";
 import { Icon } from "../Icon";
 import { IconName } from "../Icon/IconRegistry";
 import cx from "classnames";
 
-interface SearchFieldProps extends PropsWithChildren {
-  onChange?: (query: string, event: ChangeEvent<HTMLInputElement>) => void;
+interface TextFieldProps extends PropsWithChildren, InputHTMLAttributes<HTMLInputElement> {
   icon?: IconName;
   className?: string;
 }
 
-export const TextField: FC<SearchFieldProps> = (props) => {
+export const TextField: FC<TextFieldProps> = ({ icon, className, children, ...props }) => {
   const id = useId();
-  const handleChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => props.onChange?.(event.target.value, event),
-    [props?.onChange],
-  );
-
   return (
-    <div className={cx(s.container, props?.className)}>
-      {props?.icon && (
+    <div className={cx(s.container, className)}>
+      {icon && (
         <div className={s.iconContainer}>
-          <Icon name={props.icon} className={s.icon} />
+          <Icon name={icon} className={s.icon} />
         </div>
       )}
-      <input
-        id={id}
-        className={s.input}
-        type="text"
-        onChange={props?.onChange ? handleChange : undefined}
-        placeholder=" "
-      />
+      <input id={id} className={s.input} type="text" placeholder=" " {...props} />
       <label htmlFor={id} id={`${id}-label`} className={s.label}>
-        {props?.children}
+        {children}
       </label>
     </div>
   );

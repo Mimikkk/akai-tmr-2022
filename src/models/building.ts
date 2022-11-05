@@ -8,4 +8,5 @@ export interface Building {
   latitude: string;
   longitude: string;
   rooms: Room[];
+  score: number;
 }

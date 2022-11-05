@@ -1,4 +1,4 @@
-import { BuildingTile, Icon, TextField } from "../components";
+import { AddNewRoomCard, BuildingTile, Icon, TextField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Building } from "../models";
@@ -30,7 +30,7 @@ const App = () => {
     <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
       <div className="bg-gray-800 p-4 flex flex-col gap-2">
         <div>
-          <TextField onChange={handleSearch} icon={"Magnifier"}>
+          <TextField onChange={(event) => handleSearch(event.target.value)} icon={"Magnifier"}>
             Wyszukaj salę
           </TextField>
         </div>
@@ -38,16 +38,7 @@ const App = () => {
           {building.map((building) => (
             <BuildingTile building={building} key={building.id} />
           ))}
-          {!building.length ? (
-            <Link href={"room/add"}>
-              <div className="w-full h-full justify-center items-center transition-all text-lg flex bg-slate-500 hover:bg-slate-400 cursor-pointer p-4 rounded">
-                <label htmlFor={"add-new"} className={"cursor-pointer"}>
-                  Dodaj nową sale
-                </label>
-                <Icon name={"ArrowRight"} id={"add-new"} />
-              </div>
-            </Link>
-          ) : null}
+          {!building.length && <AddNewRoomCard />}
         </div>
       </div>
       <div className="bg-gray-700"></div>
