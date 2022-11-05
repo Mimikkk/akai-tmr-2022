@@ -41,9 +41,8 @@
       @include s.truncate;
     }
 
-    @include s.centered;
+    //@include s.centered;
     @apply h-full w-full;
     @apply flex-row;
-    @apply text-gray-300;
   }
 }

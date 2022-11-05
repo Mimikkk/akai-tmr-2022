@@ -33,7 +33,10 @@ const App = ({ Component, pageProps }: AppProps) => {
           <main className={s.main}>
             <Component {...pageProps} />
           </main>
-          <footer className={s.footer} onClick={togglePartyMode}>
+          <footer
+            className={cx(s.footer, "text-gray-900 dark:text-gray-300 hidden sm:flex justify-center items-center")}
+            onClick={togglePartyMode}
+          >
             <span className={s.hidden}>Aplikacja stworzona podczas hackathonu AKAI Code 4-5.11.2022</span>
             <Icon
               className={"mx-2 hover:cursor-pointer fill-slate-200"}

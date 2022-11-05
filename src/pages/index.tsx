@@ -32,8 +32,10 @@ const App = () => {
   return (
     <>
       {buildings?.length && isPartyModeEnabled ? <Confetti width={width} height={height} /> : null}
-      <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded"}>
-        <div className={cx(s.items, "bg-gray-100 dark:bg-gray-900 p-4 h-full overflow-hidden flex flex-col gap-2")}>
+      <div className="h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded">
+        <div
+          className={cx(s.items, "bg-gray-100 dark:bg-gray-900 p-4 pb-0 h-full overflow-hidden flex flex-col gap-2")}
+        >
           <div>
             <TextField onChange={(event) => setFormData(event.target.value)} icon={"Magnifier"}>
               Wyszukaj salę
