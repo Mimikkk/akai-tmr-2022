@@ -1,47 +1,44 @@
-import { AddNewRoomCard, BuildingTile, Icon, TextField } from "../components";
-import { useCallback, useState } from "react";
-import { throttle } from "lodash-es";
+import { AddNewRoomCard, BuildingTile, TextField } from "../components";
+import { useState } from "react";
 import { Building } from "../models";
 import { BuildingService } from "../services";
-import Link from "next/link";
 import s from "./index.module.scss";
 import cx from "classnames";
+import { useDebounce } from "react-use";
+import { useQuery } from "@tanstack/react-query";
 
 const App = () => {
-  const [isSearching, toggleSearching] = useState(false);
-  const [buildings, setBuildings] = useState<Building[]>([]);
+  const [query, setQuery] = useState("");
+  const [formData, setFormData] = useState("");
+  const { data: buildings, isLoading } = useQuery<Building[]>(["buildings", query], () =>
+    BuildingService.search(query),
+  );
 
-  const handleSearch = useCallback(
-    throttle(async (query: string) => {
-      try {
-        if (isSearching) return;
-        if (query.length < 2) {
-          setBuildings([]);
-          return;
-        }
-        toggleSearching(true);
-        const buildings = await BuildingService.search(query);
-        console.log({ buildings });
-        setBuildings(buildings);
-      } finally {
-        toggleSearching(false);
-      }
-    }, 300),
-    [],
+  useDebounce(
+    () => {
+      setQuery(formData);
+    },
+    300,
+    [formData],
   );
 
   return (
     <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
       <div className={cx(s.items, "bg-gray-800 p-4 h-full overflow-hidden flex flex-col gap-2")}>
         <div>
-          <TextField onChange={(event) => handleSearch(event.target.value)} icon={"Magnifier"}>
+          <TextField onChange={(event) => setFormData(event.target.value)} icon={"Magnifier"}>
             Wyszukaj salę
           </TextField>
         </div>
         <div className={cx(s.items, "flex flex-col gap-2")}>
-          {buildings.map((building) => (
-            <BuildingTile building={building} key={building.id} />
-          ))}
+          {isLoading || !buildings ? null : (
+            <>
+              {buildings.map((building) => (
+                <BuildingTile building={building} key={building.id} />
+              ))}
+              {!buildings.length ? <AddNewRoomCard /> : null}
+            </>
+          )}
         </div>
       </div>
       <div className="bg-gray-700"></div>
@@ -50,3 +47,4 @@ const App = () => {
 };
 
 export default App;
+
