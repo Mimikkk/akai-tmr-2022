@@ -26,7 +26,7 @@ const App = () => {
     [formData],
   );
 
-  const { isPartyModeEnabled, togglePartyMode } = usePartyModeStore();
+  const { isPartyModeEnabled } = usePartyModeStore();
 
   return (
     <>
@@ -54,3 +54,4 @@ const App = () => {
 };
 
 export default App;
+
