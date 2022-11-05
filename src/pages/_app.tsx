@@ -12,7 +12,9 @@ const App = ({ Component, pageProps }: AppProps) => (
   <QueryClientProvider client={queryClient}>
     <div className={s.app}>
       <header className={s.header}>
-        <Icon name="ArrowRight" />
+        <div>
+          <Icon className="!w-12 !h-12" name="Home" href="/" />
+        </div>
         <span className={s.title}>Supabase głupie</span>
       </header>
       <main className={s.main}>
