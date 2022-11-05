@@ -15,19 +15,8 @@
 
     .icon {
       @apply w-12 h-12;
-      animation: spin-icon 1s ease-in-out;
-      &:active {
-        animation: none;
+      @apply fill-gray-400;
 
-        @keyframes spin-icon {
-          0% {
-            transform: rotateY(0deg);
-          }
-          100% {
-            transform: rotateY(360deg);
-          }
-        }
-      }
     }
 
     .title {
