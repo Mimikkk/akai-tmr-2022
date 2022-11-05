@@ -23,7 +23,9 @@ const AddBuildingPage = () => {
 
   const { query } = useRouter();
 
-  const onSubmit = (data: DataProps) => RoomService.create({ ...data, buildingId: query.buildingId as string });
+  const onSubmit = (data: DataProps) => {
+    RoomService.create({ ...data, buildingId: query.buildingId as string }).then();
+  };
 
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
@@ -33,12 +35,12 @@ const AddBuildingPage = () => {
           <TextField icon={"Room"} {...register("room")}>
             Nazwa sali
           </TextField>
-          <TextField icon={"Level"} {...register("level")}>
+          <TextField icon={"Stairs"} {...register("level")}>
             Piętro
           </TextField>
           <div className="">
             <TextField
-              icon={"Level"}
+              icon={"Alias"}
               onKeyDown={(event) => {
                 const { value } = event.currentTarget;
                 if (!value || event.key !== "Enter") {
