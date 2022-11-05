@@ -10,7 +10,7 @@ interface SearchFieldProps extends PropsWithChildren, Omit<InputHTMLAttributes<H
   className?: string;
 }
 
-export const TextField: FC<SearchFieldProps> = ({ onChange, icon, className, ...props }) => {
+export const TextField: FC<SearchFieldProps> = ({ onChange, icon, className, children, ...props }) => {
   const id = useId();
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => onChange?.(event.target.value, event),
@@ -27,13 +27,13 @@ export const TextField: FC<SearchFieldProps> = ({ onChange, icon, className, ...
       <input
         id={id}
         className={s.input}
-        {...props}
         type="text"
         onChange={onChange ? handleChange : undefined}
         placeholder=" "
+        {...props}
       />
       <label htmlFor={id} id={`${id}-label`} className={s.label}>
-        {props?.children}
+        {children}
       </label>
     </div>
   );

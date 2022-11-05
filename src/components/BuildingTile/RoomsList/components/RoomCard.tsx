@@ -2,7 +2,7 @@ import cx from "classnames";
 import s from "./RoomCard.module.scss";
 import { Icon } from "../../../Icon";
 import Link from "next/link";
-import { Urls } from "../../../../urls.enum";
+import { Urls } from "../../../../urls";
 import { Building, Room } from "../../../../models";
 
 export interface RoomProps {
