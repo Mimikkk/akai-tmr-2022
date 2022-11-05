@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <header className={s.header}>
           <Icon name="ArrowRight" />
-          <span className={s.title}>Jest zajebiście</span>
+          <span className={s.title}>Supabase głupie</span>
         </header>
         <main className={s.main}>
           <Component {...pageProps} />

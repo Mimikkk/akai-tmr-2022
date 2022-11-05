@@ -1,9 +1,8 @@
 import { RoomsList, SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
-import { Room } from "../components/RoomsList/components/Room";
 import mockData from "../mock-data";
-import { Building } from "../models";
+import { Building, Room } from "../models";
 import { BuildingService } from "../services";
 
 const App = () => {
@@ -32,21 +31,37 @@ const App = () => {
       <div className="bg-gray-800 p-4">
         <SearchField onChange={handleSearch}>Wyszukaj salę</SearchField>
         <div>
-          <RoomsList>
-            {building.map((building, index) => (
-              <Room
-                key={index}
-                title={building.displayName}
-                roomNames={building.rooms.map((room) => room.aliases.join(", "))}
-                building={building.displayName}
-              />
-            ))}
-          </RoomsList>
+          {building.map((building) => (
+            <BuildingTile building={building} key={building.id} />
+          ))}
         </div>
       </div>
       <div className="bg-gray-700"></div>
     </div>
   );
 };
+
+interface BuildingProps {
+  building: Building;
+}
+
+interface RoomProps {
+  room: Room;
+}
+
+const RoomCard = ({ room }: RoomProps) => {
+  return <div className="bg-gray-800 p-4"></div>;
+};
+
+const BuildingTile = ({ building }: BuildingProps) => (
+  <div>
+    <span>{building.displayName}</span>
+    <div>
+      {building.rooms.map((room) => (
+        <RoomCard key={room.id} room={room} />
+      ))}
+    </div>
+  </div>
+);
 
 export default App;
