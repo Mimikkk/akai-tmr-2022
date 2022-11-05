@@ -1,0 +1,5 @@
+@use 'styles/utils' as s;
+
+.items {
+  @include s.scrollable;
+}

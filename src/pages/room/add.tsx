@@ -17,13 +17,10 @@ const AddBuildingPage = () => {
 
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
-      <section className="flex">
+      <section className="flex w-1/3">
         <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-2"}>
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
-          </TextField>
-          <TextField icon={"Building"} {...register("displayName", { required: true })}>
-            Nazwa Wyświetlana
           </TextField>
           <TextField icon={"Building"} {...register("building", { required: true })}>
             Budynek
@@ -31,7 +28,7 @@ const AddBuildingPage = () => {
           <TextField icon={"Level"} {...(register("level"), { required: true })}>
             Piętro
           </TextField>
-          <div className="afe">
+          <div className="">
             <TextField
               icon={"Level"}
               onKeyDown={(event) => {
@@ -49,23 +46,20 @@ const AddBuildingPage = () => {
             >
               Aliasy
             </TextField>
-            <div className="flex flex-col">
+            <div className="flex flex-wrap max-h-48 overflow-auto items-baseline">
               {chips?.map((chip) => (
                 <span
                   key={chip}
                   className="bg-slate-400 flex items-center justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
+                  onClick={() =>
+                    setValue(
+                      "aliases",
+                      chips.filter((c) => c !== chip),
+                    )
+                  }
                 >
                   {chip}
-                  <Icon
-                    name="Minus"
-                    className="cursor-pointer hover:text-red-500"
-                    onClick={() =>
-                      setValue(
-                        "aliases",
-                        chips.filter((c) => c !== chip),
-                      )
-                    }
-                  />
+                  <Icon name="Minus" className="cursor-pointer hover:text-red-500" />
                 </span>
               ))}
             </div>
