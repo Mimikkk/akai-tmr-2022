@@ -4,6 +4,7 @@ import s from "./_app.module.scss";
 import { Icon } from "../components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { usePartyModeStore } from "../usePartyMode";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 0 } },
@@ -17,6 +18,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     alert("Świetne zagranie!!");
   }, [sleepCounter]);
 
+  const { isPartyModeEnabled, togglePartyMode } = usePartyModeStore();
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className={s.app}>
@@ -25,19 +28,23 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Icon className={s.icon} name="Home" href="/" />
           </div>
           <span className={s.title}>
-            <img
-              src={"/cool-logo.gif"}
-              alt="loading..."
-              onClick={() => {
-                setCounter(sleepCounter + 1);
-              }}
-            />
+            {isPartyModeEnabled ? (
+              <img
+                src={"/cool-logo.gif"}
+                alt="loading..."
+                onClick={() => {
+                  setCounter(sleepCounter + 1);
+                }}
+              />
+            ) : (
+              <span>MapaPP</span>
+            )}
           </span>
         </header>
         <main className={s.main}>
           <Component {...pageProps} />
         </main>
-        <footer className={s.footer}>
+        <footer className={s.footer} onClick={togglePartyMode}>
           <span className={s.hidden}>Aplikacja stworzona podczas hackathonu AKAI Code 4-5.11.2022</span>
           <Icon
             className={"mx-2 hover:cursor-pointer fill-slate-200"}

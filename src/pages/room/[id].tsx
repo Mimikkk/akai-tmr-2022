@@ -17,7 +17,6 @@ const RoomPage = () => {
 
   return (
     <div className={s.scroller}>
-      <p>Post: {id}</p>
       {urlData && !isLoading && (
         <>
           <LeafletMapNoSSR data={data.buildings} />

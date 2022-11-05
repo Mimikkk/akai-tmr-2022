@@ -8,6 +8,7 @@ import { useDebounce } from "react-use";
 import { useQuery } from "@tanstack/react-query";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import { usePartyModeStore } from "../usePartyMode";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -25,9 +26,11 @@ const App = () => {
     [formData],
   );
 
+  const { isPartyModeEnabled, togglePartyMode } = usePartyModeStore();
+
   return (
     <>
-      {buildings?.length ? <Confetti width={width} height={height} /> : null}
+      {buildings?.length && isPartyModeEnabled ? <Confetti width={width} height={height} /> : null}
       <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded"}>
         <div className={cx(s.items, "bg-gray-800 p-4 h-full overflow-hidden flex flex-col gap-2")}>
           <div>
