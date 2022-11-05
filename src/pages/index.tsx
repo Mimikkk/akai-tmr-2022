@@ -1,4 +1,4 @@
-import { BuildingTile, Icon, SearchField } from "../components";
+import { BuildingTile, Icon, TextField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Building } from "../models";
@@ -30,7 +30,9 @@ const App = () => {
     <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
       <div className="bg-gray-800 p-4 flex flex-col gap-2">
         <div>
-          <SearchField onChange={handleSearch}>Wyszukaj salę</SearchField>
+          <TextField onChange={handleSearch} icon={"Magnifier"}>
+            Wyszukaj salę
+          </TextField>
         </div>
         <div>
           {building.map((building) => (
