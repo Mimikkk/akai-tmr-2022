@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => (
     <div className={s.app}>
       <header className={s.header}>
         <div>
-          <Icon className="!w-12 !h-12" name="Home" href="/" />
+          <Icon className={s.icon} name="Home" href="/" />
         </div>
         <span className={s.title}>Mapa PP</span>
       </header>

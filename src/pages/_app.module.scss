@@ -13,6 +13,23 @@
     @apply flex items-center flex-row;
     @apply text-gray-500;
 
+    .icon {
+      @apply w-12 h-12;
+      animation: spin-icon 1s ease-in-out;
+      &:active {
+        animation: none;
+
+        @keyframes spin-icon {
+          0% {
+            transform: rotateY(0deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
+        }
+      }
+    }
+
     .title {
       font-size: 4rem;
     }
@@ -24,9 +41,11 @@
 
   .footer {
     @include s.truncate;
+
     .hidden {
       @include s.truncate;
     }
+
     @include s.centered;
     @apply h-full w-full;
     @apply flex-row;
