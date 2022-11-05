@@ -2,7 +2,7 @@ import supabase from "../supabase";
 import { Room } from "../models";
 
 export const RoomService = {
-  readAll: async () => {
+  readAll: async (): Promise<Room[]> => {
     const { data: rooms, error }: any = await supabase.from("rooms").select(`*`);
     if (error) throw error;
     return rooms;
