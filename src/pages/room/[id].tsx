@@ -29,7 +29,7 @@ const RoomPage = () => {
           <>
             <h1 className="font-bold text-3xl">{data.aliases[0]}</h1>
             <div>
-              <span className="font-bold">Inne nazwy sali:</span>{" "}
+              <span className="font-bold">Inne nazwy sali:</span>
               <ul className="list-disc list-inside">
                 {data.aliases.slice(1).map((alias: string) => (
                   <li>{alias}</li>
@@ -48,7 +48,8 @@ const RoomPage = () => {
             <div>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${data.buildings.latitude},${data.buildings.longitude}`}
-                className="font-bold"
+                className="font-bold underline text-blue-500 hover:text-blue-600 transition-all"
+                target="_blank"
               >
                 Link do budynku w Google Maps
               </a>
