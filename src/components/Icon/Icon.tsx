@@ -9,6 +9,7 @@ interface IconProps {
   className?: string;
   name: IconName;
   href?: string;
+  id?: string;
   onClick?: (event: MouseEvent<SVGElement>) => void;
 }
 

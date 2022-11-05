@@ -9,6 +9,7 @@ $font-size: 2.5rem;
 .container {
   @apply flex flex-grow relative;
   @apply transition-all;
+  height: 5rem;
   @apply bg-white border-2 border-slate-500;
   @apply rounded-2xl;
 
