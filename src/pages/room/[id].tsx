@@ -7,6 +7,7 @@ import { RoomService } from "../../services";
 import supabase from "../../supabase";
 import s from "./[id].module.scss";
 import cx from "classnames";
+import Head from "next/head";
 
 const RoomPage = () => {
   const router = useRouter();
@@ -19,40 +20,45 @@ const RoomPage = () => {
   });
 
   return (
-    <div className={cx(s.scroller, "flex flex-col gap-3")}>
-      {url && !isLoading && (
-        <>
-          <h1 className="font-bold text-3xl">{data.aliases[0]}</h1>
-          <div>
-            <span className="font-bold">Inne nazwy sali:</span>{" "}
-            <ul className="list-disc list-inside">
-              {data.aliases.slice(1).map((alias: string) => (
+    <>
+      <Head>
+        <title>{[data?.aliases[0], data?.buildings.displayName, "MapaPP"].filter(Boolean).join(" - ")}</title>
+      </Head>
+      <div className={cx(s.scroller, "flex flex-col gap-3")}>
+        {url && !isLoading && (
+          <>
+            <h1 className="font-bold text-3xl">{data.aliases[0]}</h1>
+            <div>
+              <span className="font-bold">Inne nazwy sali:</span>{" "}
+              <ul className="list-disc list-inside">
+                {data.aliases.slice(1).map((alias: string) => (
+                  <li>{alias}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <span className="font-bold">Piętro:</span> {data.level}
+            </div>
+            <div>
+              <span className="font-bold">Budynek:</span> {data.buildings.displayName}
+              {data.buildings.aliases.map((alias: string) => (
                 <li>{alias}</li>
               ))}
-            </ul>
-          </div>
-          <div>
-            <span className="font-bold">Piętro:</span> {data.level}
-          </div>
-          <div>
-            <span className="font-bold">Budynek:</span> {data.buildings.displayName}
-            {data.buildings.aliases.map((alias: string) => (
-              <li>{alias}</li>
-            ))}
-          </div>
-          <div>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${data.buildings.latitude},${data.buildings.longitude}`}
-            >
-              Link do budynku w Google Maps
-            </a>
-          </div>
+            </div>
+            <div>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${data.buildings.latitude},${data.buildings.longitude}`}
+              >
+                Link do budynku w Google Maps
+              </a>
+            </div>
 
-          <LeafletMapNoSSR data={data.buildings} />
-          <ImageWithDot src={url} dotX={data.x} dotY={data.y} />
-        </>
-      )}
-    </div>
+            <LeafletMapNoSSR data={data.buildings} />
+            <ImageWithDot src={url} dotX={data.x} dotY={data.y} />
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

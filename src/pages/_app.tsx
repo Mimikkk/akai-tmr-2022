@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggler } from "../components/ThemeToggler";
 import cx from "classnames";
+import Head from "next/head";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 0 } },

@@ -10,6 +10,7 @@ import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { usePartyModeStore } from "../usePartyMode";
 import buildingTileStyles from "../components/BuildingTile/BuildingTile.module.scss";
+import Head from "next/head";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -31,6 +32,9 @@ const App = () => {
 
   return (
     <>
+      <Head>
+        <title>MapaPP</title>
+      </Head>
       {buildings?.length && isPartyModeEnabled ? <Confetti width={width} height={height} /> : null}
       <div className="h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded">
         <div
