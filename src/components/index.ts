@@ -1,4 +1,4 @@
 export * from "./Icon";
-export * from "./FormInput";
+export * from "./Input";
 export * from "./RoomsList";
 export * from "./SearchField";

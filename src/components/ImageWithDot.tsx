@@ -30,7 +30,7 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
       context.beginPath();
       context.arc(dotX, dotY, dotRadius, 0, 2 * Math.PI);
       context.fill();
-      canvas.addEventListener("mousemove", (e) => {
+      canvas.addEventListener("click", (e) => {
         const rect = canvas.getBoundingClientRect();
         const elementRelativeX = e.clientX - rect.left;
         const elementRelativeY = e.clientY - rect.top;
