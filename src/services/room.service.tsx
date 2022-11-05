@@ -11,10 +11,17 @@ export const RoomService = {
   },
 
   create: async (room: RoomProps) => {
-    const { data: rooms, error }: any = await supabase.from("rooms").insert([room]);
+    const { data, error }: any = await supabase.from("rooms").insert([room]);
 
     if (error) throw error;
-    return rooms;
+    return data;
+  },
+
+  updateScore: async (score: number, id: string) => {
+    const { data, error } = await supabase.from("rooms").update({ score }).eq("id", id);
+
+    if (error) throw error;
+    return data;
   },
 
   read: async (id: string) => {
