@@ -5,7 +5,7 @@ import { Icon } from "../components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { usePartyModeStore } from "../usePartyMode";
 import Link from "next/link";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import { ThemeToggler } from "../components/ThemeToggler";
 import cx from "classnames";
 
@@ -15,7 +15,7 @@ const queryClient = new QueryClient({
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { isPartyModeEnabled, togglePartyMode } = usePartyModeStore();
-
+  const { theme } = useTheme();
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider enableSystem={true} attribute="class">
@@ -30,7 +30,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             </Link>
             <ThemeToggler />
           </header>
-          <main className={s.main}>
+          <main className={cx(s.main, theme === "dark" && "dark")}>
             <Component {...pageProps} />
           </main>
           <footer

@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ImageWithDot } from "../../components/ImageWithDot";
 import supabase from "../../supabase";
 import { useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export interface DataProps {
   aliases: string[];
@@ -34,7 +35,7 @@ const AddBuildingPage = () => {
   const onSubmit = (data: DataProps) => {
     RoomService.create({ ...data, buildingId: query.buildingId as string }).then(() => push("/"));
   };
-
+  const { theme } = useTheme();
   const { data } = useQuery(
     ["building", query.buildingId],
     () => query.buildingId && BuildingService.read(query.buildingId as string),
@@ -104,11 +105,17 @@ const AddBuildingPage = () => {
               >
                 Aliasy
               </TextField>
-              <div className={cx(s.items, "flex flex-wrap max-h-48 overflow-auto items-baseline")}>
+              <div
+                className={cx(
+                  s.items,
+                  theme === "dark" && "dark",
+                  "flex flex-wrap max-h-48 overflow-auto items-baseline",
+                )}
+              >
                 {chips?.map((chip) => (
                   <span
                     key={chip}
-                    className="bg-slate-400 flex items-center justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
+                    className="bg-slate-400 flex items-center capitalize justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
                     onClick={() =>
                       setValue(
                         "aliases",
@@ -117,7 +124,7 @@ const AddBuildingPage = () => {
                     }
                   >
                     {chip}
-                    <Icon name="XCircle" className="cursor-pointer hover:text-red-500" />
+                    <Icon name="XCircle" className="cursor-pointer -mr-1 hover:text-red-500" />
                   </span>
                 ))}
               </div>

@@ -34,4 +34,9 @@
       @apply border-#{$color}-800;
     }
   }
+
+  &:global(.dark)::-webkit-scrollbar-thumb {
+    @apply bg-#{$color}-800;
+    @apply border-#{$color}-200;
+  }
 }

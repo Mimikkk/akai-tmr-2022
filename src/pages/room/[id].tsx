@@ -21,7 +21,6 @@ const RoomPage = () => {
     },
   });
   const { theme } = useTheme();
-  console.log({ theme });
 
   return (
     <>

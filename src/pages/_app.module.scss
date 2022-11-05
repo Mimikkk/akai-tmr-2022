@@ -32,6 +32,7 @@
 
   .main {
     @apply flex justify-center;
+    @include s.scrollable;
   }
 
   .footer {

@@ -26,17 +26,3 @@ export const usePartyModeStore = create(
     },
   ),
 );
-
-// const usePartyMode = () => {
-//   const { isPartyModeEnabled} = usePartyModeStore((state) => state);
-//   return;
-// };
-//
-// export const usePartyMode = () => {
-//   const [isPartyModeEnabled, setValue, remove] = useLocalStorage("partyMode", false);
-//   const togglePartyMode = useCallback(() => {
-//     console.log(isPartyModeEnabled);
-//     setValue(!isPartyModeEnabled);
-//   }, [setValue, isPartyModeEnabled]);
-//   return { isPartyModeEnabled, togglePartyMode };
-// };
