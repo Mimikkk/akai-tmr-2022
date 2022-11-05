@@ -13,7 +13,7 @@
   &.clickable {
     @apply cursor-pointer;
   }
-  animation: spin-icon 1s ease-in-out;
+  //animation: spin-icon 1s ease-in-out;
 
   &:active {
     animation: none;
