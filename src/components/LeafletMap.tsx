@@ -7,12 +7,7 @@ import { LocationMarker } from "./LocationMarker";
 export const LeafletMap = ({ data }: { data: any }) => {
   const geo = [data.latitude, data.longitude] as [number, number];
   return (
-    <MapContainer
-      style={{ width: "100%", height: "420px", position: "relative" }}
-      center={geo}
-      zoom={15}
-      scrollWheelZoom={false}
-    >
+    <MapContainer style={{ width: "100%", minHeight: "420px" }} center={geo} zoom={15} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -6,6 +6,7 @@ import { LeafletMapNoSSR } from "../../components/LeafletMapNoSSR";
 import { RoomService } from "../../services";
 import supabase from "../../supabase";
 import s from "./[id].module.scss";
+import cx from "classnames";
 
 const RoomPage = () => {
   const router = useRouter();
@@ -16,11 +17,37 @@ const RoomPage = () => {
       setUrl(supabase.storage.from("mapa-pp").getPublicUrl(`${data.buildings.name}/${data.level}.png`).data.publicUrl);
     },
   });
-
+  console.log(data);
   return (
-    <div className={s.scroller}>
+    <div className={cx(s.scroller, "flex flex-col gap-3")}>
       {url && !isLoading && (
         <>
+          <h1 className="font-bold text-3xl">{data.aliases[0]}</h1>
+          <div>
+            <span className="font-bold">Inne nazwy sali:</span>{" "}
+            <ul className="list-disc list-inside">
+              {data.aliases.slice(1).map((alias: string) => (
+                <li>{alias}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <span className="font-bold">Piętro:</span> {data.level}
+          </div>
+          <div>
+            <span className="font-bold">Budynek:</span> {data.buildings.displayName}
+            {data.buildings.aliases.map((alias: string) => (
+              <li>{alias}</li>
+            ))}
+          </div>
+          <div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${data.buildings.latitude},${data.buildings.longitude}`}
+            >
+              Link do budynku w Google Maps
+            </a>
+          </div>
+
           <LeafletMapNoSSR data={data.buildings} />
           <ImageWithDot src={url} dotX={data.x} dotY={data.y} />
         </>
