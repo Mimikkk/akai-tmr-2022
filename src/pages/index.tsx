@@ -42,7 +42,6 @@ const App = () => {
           {buildings.map((building) => (
             <BuildingTile building={building} key={building.id} />
           ))}
-          {!buildings.length && <AddNewRoomCard />}
         </div>
       </div>
       <div className="bg-gray-700"></div>
