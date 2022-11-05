@@ -40,7 +40,6 @@ const App = () => {
           )}
         </div>
       </div>
-      <div className="bg-gray-700"></div>
     </div>
   );
 };
