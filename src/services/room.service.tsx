@@ -1,7 +1,12 @@
 import supabase from "../supabase";
 import { Room } from "../models";
 
-type RoomProps = Omit<Room, "score">;
+interface Props {
+  aliases: string[];
+  level: string;
+  room: string;
+  buildingId: string;
+}
 
 export const RoomService = {
   readAll: async (): Promise<Room[]> => {
@@ -10,8 +15,8 @@ export const RoomService = {
     return rooms;
   },
 
-  create: async (room: RoomProps) => {
-    const { data, error }: any = await supabase.from("rooms").insert([room]);
+  create: async ({ aliases, level, room: name, buildingId }: Props) => {
+    const { data, error }: any = await supabase.from("rooms").insert([{ aliases, level, name, buildingId }]);
 
     if (error) throw error;
     return data;
