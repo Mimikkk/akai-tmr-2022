@@ -3,6 +3,13 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import s from "./add.module.scss";
 import cx from "classnames";
+import { RoomService } from "../../services";
+
+export interface DataProps {
+  aliases: string[];
+  level: string;
+  room: string;
+}
 
 const AddBuildingPage = () => {
   const { setValue, watch, register, handleSubmit } = useForm({
@@ -16,7 +23,7 @@ const AddBuildingPage = () => {
 
   const { query } = useRouter();
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: DataProps) => RoomService.create({ ...data, buildingId: query.buildingId as string });
 
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
