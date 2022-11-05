@@ -18,11 +18,7 @@ export const RoomService = {
   },
 
   get: async (id: string) => {
-    const { data, error } = await supabase
-      .from("rooms")
-      .select("*, buildings (name, displayName, latitude, longitude)")
-      .eq("id", id)
-      .single();
+    const { data, error } = await supabase.from("rooms").select("*, buildings (*)").eq("id", id).single();
 
     if (error) {
       throw new Error(error.message);
