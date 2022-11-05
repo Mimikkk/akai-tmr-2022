@@ -26,8 +26,7 @@ const AddBuildingPage = () => {
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
           </TextField>
-          <TextField icon={"Level"} {...register("level", { required: true })}>
-          </TextField>
+          <TextField icon={"Level"} {...register("level", { required: true })}></TextField>
           <TextField icon={"Building"} {...register("building", { required: true })}>
             Budynek
           </TextField>
