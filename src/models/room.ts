@@ -6,4 +6,5 @@ export interface Room {
   level: number;
   buildingId: string;
   aliases: string[];
+  score: number;
 }

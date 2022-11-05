@@ -9,7 +9,7 @@ interface TextFieldProps extends PropsWithChildren, InputHTMLAttributes<HTMLInpu
   className?: string;
 }
 
-export const TextField: FC<TextFieldProps> = ({ onChange, icon, className, children, ...props }) => {
+export const TextField: FC<SearchFieldProps> = ({ onChange, icon, className, children, ...props }) => {
   const id = useId();
   return (
     <div className={cx(s.container, className)}>
@@ -18,7 +18,14 @@ export const TextField: FC<TextFieldProps> = ({ onChange, icon, className, child
           <Icon name={icon} className={s.icon} />
         </div>
       )}
-      <input {...props} id={id} className={s.input} type="text" placeholder=" " />
+      <input
+        id={id}
+        className={s.input}
+        type="text"
+        onChange={onChange ? handleChange : undefined}
+        placeholder=" "
+        {...props}
+      />
       <label htmlFor={id} id={`${id}-label`} className={s.label}>
         {children}
       </label>
