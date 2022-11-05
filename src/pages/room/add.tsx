@@ -1,6 +1,8 @@
 import { Icon, TextField } from "../../components";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import s from "./add.module.scss";
+import cx from "classnames";
 
 const AddBuildingPage = () => {
   const { setValue, watch, register, handleSubmit } = useForm({
@@ -20,16 +22,20 @@ const AddBuildingPage = () => {
 
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
-      <section className="flex flex-col">
+      <section className="flex flex-col w-1/3">
         <h2 className={"text-2xl font-bold text-center"}>{query.buildingName}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-3"}>
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
           </TextField>
-          <TextField icon={"Level"} {...register("level", { required: true })}>
+          <TextField icon={"Level"} {...register("level", { required: true })}></TextField>
+          <TextField icon={"Building"} {...register("building", { required: true })}>
+            Budynek
+          </TextField>
+          <TextField icon={"Level"} {...(register("level"), { required: true })}>
             Piętro
           </TextField>
-          <div className="afe">
+          <div className="">
             <TextField
               icon={"Level"}
               onKeyDown={(event) => {
@@ -47,23 +53,20 @@ const AddBuildingPage = () => {
             >
               Aliasy
             </TextField>
-            <div className="flex flex-col">
+            <div className={cx(s.items, "flex flex-wrap max-h-48 overflow-auto items-baseline")}>
               {chips?.map((chip) => (
                 <span
                   key={chip}
                   className="bg-slate-400 flex items-center justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
+                  onClick={() =>
+                    setValue(
+                      "aliases",
+                      chips.filter((c) => c !== chip),
+                    )
+                  }
                 >
                   {chip}
-                  <Icon
-                    name="Minus"
-                    className="cursor-pointer hover:text-red-500"
-                    onClick={() =>
-                      setValue(
-                        "aliases",
-                        chips.filter((c) => c !== chip),
-                      )
-                    }
-                  />
+                  <Icon name="Minus" className="cursor-pointer hover:text-red-500" />
                 </span>
               ))}
             </div>
