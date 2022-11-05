@@ -18,20 +18,13 @@ const AddBuildingPage = () => {
 
   const onSubmit = (data: any) => console.log(data);
 
-  console.log(query.buildingName);
-
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
-      <section className="flex">
+      <section className="flex flex-col">
+        <h2 className={"text-2xl font-bold text-center"}>{query.buildingName}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-3"}>
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
-          </TextField>
-          <TextField icon={"Building"} {...register("displayName", { required: true })}>
-            Nazwa Wyświetlana
-          </TextField>
-          <TextField icon={"Building"} {...register("building", { required: true })}>
-            Budynek
           </TextField>
           <TextField icon={"Level"} {...register("level", { required: true })}>
             Piętro
