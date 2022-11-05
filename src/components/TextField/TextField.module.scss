@@ -59,7 +59,7 @@ $font-size: 2.0rem;
   }
 
   .iconContainer {
-    @apply border-r-2 my-2 border-gray-300;
+    @apply my-2 border-gray-300;
     @apply transition-all;
 
     .icon {
