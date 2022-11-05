@@ -46,6 +46,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "lodash-es": "^4.17.21",
     "next": "^13.0.2",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",

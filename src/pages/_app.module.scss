@@ -2,7 +2,6 @@
 
 .app {
   @apply w-screen h-screen;
-  @apply bg-gray-900;
   @apply grid grid-cols-1 gap-x-2;
   @apply justify-center;
   grid-template-rows: minmax(0, 2fr) minmax(0, 21fr) minmax(0, 1fr);
@@ -28,6 +27,7 @@
     }
 
     .title {
+      @apply ml-4;
       font-size: 3.5rem;
     }
   }
