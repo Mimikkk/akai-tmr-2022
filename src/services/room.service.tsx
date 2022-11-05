@@ -17,7 +17,7 @@ export const RoomService = {
     return rooms;
   },
 
-  get: async (id: string) => {
+  read: async (id: string) => {
     const { data, error } = await supabase.from("rooms").select("*, buildings(*)").eq("id", id).single();
 
     if (error) {
