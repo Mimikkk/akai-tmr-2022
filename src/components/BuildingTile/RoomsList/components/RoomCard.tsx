@@ -26,13 +26,14 @@ export const RoomCard = ({ room, className }: RoomProps) => {
   });
 
   return (
-    <Link href={`${Urls.Room}/${room.id}`}>
-      <li className={cx(s.content, className)}>
-        <div className={s.vote}>
-          <Icon name={"ThumbsUp"} className={s.upvote} onClick={() => addPoint.mutate()} />
-          {room.score}
-          <Icon name={"ThumbsDown"} className={s.downvote} onClick={() => removePoint.mutate()} />
-        </div>
+    <li className={cx(s.content, className)}>
+      <div className={s.vote}>
+        <Icon name={"ThumbsUp"} className={s.upvote} onClick={() => addPoint.mutate()} />
+        {room.score}
+        <Icon name={"ThumbsDown"} className={s.downvote} onClick={() => removePoint.mutate()} />
+      </div>
+
+      <Link href={`${Urls.Room}/${room.id}`} className="flex grow mx-2">
         <div className={"grow mx-2"}>
           <h2 className={cx(s.title)}>{room.name}</h2>
           <div>
@@ -52,7 +53,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
           </div>
         </div>
         <Icon name="ArrowRight" />
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 };
