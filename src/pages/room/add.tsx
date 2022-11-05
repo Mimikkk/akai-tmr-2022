@@ -115,7 +115,7 @@ const AddBuildingPage = () => {
                 {chips?.map((chip) => (
                   <span
                     key={chip}
-                    className="bg-slate-400 flex items-center capitalize justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
+                    className="bg-slate-400 text-slate-800 flex items-center capitalize justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
                     onClick={() =>
                       setValue(
                         "aliases",
