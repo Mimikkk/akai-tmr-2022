@@ -1,6 +1,8 @@
 import supabase from "../supabase";
 import { Room } from "../models";
 
+type RoomProps = Omit<Room, "score">;
+
 export const RoomService = {
   readAll: async (): Promise<Room[]> => {
     const { data: rooms, error }: any = await supabase.from("rooms").select(`*`);
@@ -8,10 +10,8 @@ export const RoomService = {
     return rooms;
   },
 
-  create: async ({ buildingId, name, x, y, level, aliases }: Room) => {
-    const { data: rooms, error }: any = await supabase
-      .from("rooms")
-      .insert([{ buildingId, name, x, y, level, aliases }]);
+  create: async (room: RoomProps) => {
+    const { data: rooms, error }: any = await supabase.from("rooms").insert([room]);
 
     if (error) throw error;
     return rooms;
@@ -20,7 +20,7 @@ export const RoomService = {
   get: async (id: string) => {
     const { data, error } = await supabase
       .from("rooms")
-      .select("*, buildings (name, displayName, latitude, longitude)")
+      .select("*, buildings(name, displayName, latitude, longitude)")
       .eq("id", id)
       .single();
 
@@ -35,4 +35,3 @@ export const RoomService = {
     return data;
   },
 };
-

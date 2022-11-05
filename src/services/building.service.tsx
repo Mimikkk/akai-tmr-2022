@@ -8,10 +8,8 @@ export const BuildingService = {
   search: async (query: string): Promise<Building[]> =>
     await axios.get("/api/search", { params: { query } }).then((res) => res.data),
 
-  create: async ({ name, longitude, latitude, displayName, aliases }: BuildingProps) => {
-    const { data: buildings, error }: any = await supabase
-      .from("buildings")
-      .insert([{ name, longitude, latitude, displayName, aliases }]);
+  create: async (building: BuildingProps) => {
+    const { data: buildings, error }: any = await supabase.from("buildings").insert([building]);
 
     if (error) throw error;
     return buildings;
