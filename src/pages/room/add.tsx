@@ -6,7 +6,6 @@ import cx from "classnames";
 import { BuildingService, RoomService } from "../../services";
 import Head from "next/head";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 import { ImageWithDot } from "../../components/ImageWithDot";
 import supabase from "../../supabase";
 
@@ -116,7 +115,7 @@ const AddBuildingPage = () => {
                 ))}
               </div>
             </div>
-            <button className={"w-full btn btn-primary"} type={"submit"}>
+            <button className="w-full btn btn-primary" type="submit">
               Prześlij
             </button>
           </form>
