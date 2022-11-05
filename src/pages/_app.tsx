@@ -15,13 +15,13 @@ const App = ({ Component, pageProps }: AppProps) => (
         <div>
           <Icon className="!w-12 !h-12" name="Home" href="/" />
         </div>
-        <span className={s.title}>Supabase RPC</span>
+        <span className={s.title}>Mapa PP</span>
       </header>
       <main className={s.main}>
         <Component {...pageProps} />
       </main>
       <footer className={s.footer}>
-        <span>Aplikacja stworzona podczas hakatonu AKAI 2022 listopad 4-5</span>
+        <span>Aplikacja stworzona podczas hackathonu AKAI Code 4-5.11.2022</span>
         <Icon
           className={"mx-2 hover:cursor-pointer fill-slate-200"}
           onClick={() => window.open("https://github.com/Mimikkk/akai-tmr-2022", "_blank")}
