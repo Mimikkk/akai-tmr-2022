@@ -36,7 +36,6 @@ const App = () => {
               {buildings.map((building) => (
                 <BuildingTile building={building} key={building.id} />
               ))}
-              {!buildings.length ? <AddNewRoomCard /> : null}
             </>
           )}
         </div>
@@ -47,4 +46,3 @@ const App = () => {
 };
 
 export default App;
-
