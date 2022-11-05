@@ -17,7 +17,7 @@ const RoomPage = () => {
       setUrl(supabase.storage.from("mapa-pp").getPublicUrl(`${data.buildings.name}/${data.level}.png`).data.publicUrl);
     },
   });
-  console.log(data);
+
   return (
     <div className={cx(s.scroller, "flex flex-col gap-3")}>
       {url && !isLoading && (
