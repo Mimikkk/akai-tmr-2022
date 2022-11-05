@@ -48,7 +48,8 @@ const RoomPage = () => {
             <div>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${data.buildings.latitude},${data.buildings.longitude}`}
-                className="font-bold"
+                className="font-bold underline text-blue-500 hover:text-blue-600 transition-all"
+                target="_blank"
               >
                 Link do budynku w Google Maps
               </a>
