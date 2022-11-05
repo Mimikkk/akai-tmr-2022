@@ -2,7 +2,6 @@ import { useMemo, MouseEvent, PropsWithChildren, useId } from "react";
 import { IconRegistry, IconName } from "./IconRegistry";
 import cx from "classnames";
 import s from "./Icon.module.scss";
-import { Urls } from "../../urls";
 import Link from "next/link";
 
 interface IconProps {

@@ -3,18 +3,26 @@ import { useRouter } from "next/router";
 import { ImageWithDot } from "../../components/ImageWithDot";
 import { LeafletMapNoSSR } from "../../components/LeafletMapNoSSR";
 import { RoomService } from "../../services";
+import supabase from "../../supabase";
 
 const RoomPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data } = useQuery(["room", id], () => RoomService.get(id as string));
-  console.log(data);
+  const { data, isLoading } = useQuery(["room", id], () => id && RoomService.get(id as string));
+
+  const { data: urlData } = data
+    ? supabase.storage.from("mapa-pp").getPublicUrl(`levels/${data.buildings.name}-level-${data.level}.png`)
+    : { data: undefined };
 
   return (
     <div className="max-w-lg">
       <p>Post: {id}</p>
-      {data ? <LeafletMapNoSSR data={data.buildings} /> : null}
-      <ImageWithDot src="/room-images/cw-level-0.png" dotX={100} dotY={200} />
+      {urlData && !isLoading && (
+        <>
+          <LeafletMapNoSSR data={data.buildings} />
+          <ImageWithDot src={urlData.publicUrl} dotX={data.x} dotY={data.y} />
+        </>
+      )}
     </div>
   );
 };

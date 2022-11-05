@@ -6,18 +6,6 @@
   @apply p-1 rounded-full;
   @apply transition-all;
 
-  .vote {
-    @apply flex flex-col pr-1;
-
-    .upvote {
-      @apply text-green-500 hover:text-green-700 cursor-pointer
-    }
-
-    .downvote {
-      @apply text-red-500 hover:text-red-700 cursor-pointer;
-    }
-  }
-
   &:hover {
     @apply bg-gray-300;
   }
