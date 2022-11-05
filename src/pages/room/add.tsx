@@ -28,8 +28,8 @@ const AddBuildingPage = () => {
 
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
-      <section className="flex flex-col w-1/3">
-        <h2 className={"text-6xl text-center text-gray-500 capitalize"}>{query.buildingName}</h2>
+      <section className="flex flex-col md:w-1/3 w-2/3">
+        <h2 className={"text-5xl text-center text-gray-300 capitalize"}>{query.buildingName}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-3"}>
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali

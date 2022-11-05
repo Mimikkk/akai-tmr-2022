@@ -6,7 +6,7 @@ interface ImageWithPointProps {
   dotY: number;
 }
 
-const dotRadius = 12;
+const dotRadius = 50;
 const dotColor = "#ff0000";
 
 export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {

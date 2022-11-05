@@ -11,7 +11,8 @@
     @include s.truncate;
     @apply h-full w-full;
     @apply flex items-center flex-row;
-    @apply text-gray-500;
+    @apply text-gray-300;
+    @apply text-center;
 
     .icon {
       @apply w-12 h-12;
@@ -19,8 +20,15 @@
 
     }
 
+
+    @media (max-width: 500px) {
+      .title {
+        @apply w-full;
+      }
+    }
+
     .title {
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
   }
 
@@ -38,6 +46,6 @@
     @include s.centered;
     @apply h-full w-full;
     @apply flex-row;
-    @apply text-gray-500;
+    @apply text-gray-300;
   }
 }
