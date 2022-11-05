@@ -21,7 +21,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
 
   const removePoint = useMutation({
     mutationFn: () => RoomService.updateScore(room.score - 1, room.id!),
-    onSuccess: () => queryClient.invalidateQueries(["room", room.id]),
+    onSuccess: () => queryClient.invalidateQueries(),
   });
 
   return (
