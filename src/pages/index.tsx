@@ -1,4 +1,4 @@
-import { AddNewRoomCard, BuildingTile, TextField } from "../components";
+import { BuildingTile, TextField } from "../components";
 import { useState } from "react";
 import { Building } from "../models";
 import { BuildingService } from "../services";
@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { usePartyModeStore } from "../usePartyMode";
+import buildingTileStyles from "../components/BuildingTile/BuildingTile.module.scss";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -39,7 +40,9 @@ const App = () => {
             </TextField>
           </div>
           <div className={cx(s.items, "flex flex-col gap-2")}>
-            {isLoading || !buildings ? null : (
+            {isLoading ? null : !buildings || buildings?.length === 0 ? (
+              <div className={buildingTileStyles.tile}>Nie znaleźliśmy takiej sali lub budynku.</div>
+            ) : (
               <>
                 {buildings.map((building) => (
                   <BuildingTile building={building} key={building.id} />
@@ -54,4 +57,3 @@ const App = () => {
 };
 
 export default App;
-
