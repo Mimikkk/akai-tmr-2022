@@ -16,4 +16,18 @@ export const BuildingService = {
     if (error) throw error;
     return buildings;
   },
+
+  read: async (id: string) => {
+    const { data, error } = await supabase.from("buildings").select("*").eq("id", id).single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    if (!data) {
+      throw new Error("Building not found");
+    }
+
+    return data;
+  },
 };

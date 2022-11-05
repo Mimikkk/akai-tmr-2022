@@ -39,8 +39,7 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
         console.log(canvasRelativeX, canvasRelativeY);
       });
     };
-  }, [canvasRef]);
+  }, [canvasRef, dotX, dotY]);
 
   return <canvas className="block w-full" ref={canvasRef} />;
 };
-
