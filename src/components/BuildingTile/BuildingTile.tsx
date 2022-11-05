@@ -12,7 +12,7 @@ export const BuildingTile = ({ building }: BuildingProps) => (
     <span className={s.title}>Budynek: {building.displayName}</span>
     <RoomsList>
       {building.rooms.map((room) => (
-        <RoomCard key={room.id} room={room} building={building} />
+        <RoomCard key={room.id} room={room} />
       ))}
       <AddNewRoomCard />
     </RoomsList>

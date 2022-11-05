@@ -6,12 +6,11 @@ import { Urls } from "../../../../urls";
 import { Building, Room } from "../../../../models";
 
 export interface RoomProps {
-  building: Building;
   room: Room;
   className?: string;
 }
 
-export const RoomCard = ({ room, building, className }: RoomProps) => (
+export const RoomCard = ({ room, className }: RoomProps) => (
   <li className={cx(s.content, className)}>
     <div className={s.vote}>
       <Icon name={"Plus"} className={s.upvote} />
