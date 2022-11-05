@@ -1,7 +1,7 @@
-@use 'styles/utils' as s;
+@use "styles/utils" as s;
 
 .icon {
-  @include s.centered('self');
+  @include s.centered("self");
   @apply w-8 h-full aspect-square;
   @apply p-1 rounded-full;
   @apply transition-all;
