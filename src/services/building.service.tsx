@@ -1,5 +1,4 @@
 import { Building } from "../models";
-import axios from "axios";
 import supabase from "../supabase";
 
 type BuildingProps = Omit<Building, "rooms">;
