@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider enableSystem={true} attribute="class">
         <div className={cx(s.app, "bg-gray-100 dark:bg-gray-900")}>
-          <header className={s.header}>
+          <header className={cx(s.header, "text-gray-900 dark:text-gray-300")}>
             <Link href="/">
               {isPartyModeEnabled ? (
                 <img src={"/cool-logo.gif"} alt="MapaPP" />

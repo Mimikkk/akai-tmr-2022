@@ -10,15 +10,14 @@
     @include s.truncate;
     @apply h-full w-full;
     @apply flex items-center flex-row;
-    @apply text-gray-300;
     @apply text-center;
+    @apply justify-between;
+    @apply px-4;
 
     .icon {
       @apply w-12 h-12;
       @apply fill-gray-400;
-
     }
-
 
     @media (max-width: 500px) {
       .title {
@@ -27,7 +26,6 @@
     }
 
     .title {
-      @apply ml-4;
       font-size: 3.5rem;
     }
   }
