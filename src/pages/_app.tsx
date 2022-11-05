@@ -23,9 +23,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           <header className={cx(s.header, "text-gray-900 dark:text-gray-300")}>
             <Link href="/">
               {isPartyModeEnabled ? (
-                <img src={"/cool-logo.gif"} alt="MapApp" />
+                <img src={"/cool-logo.gif"} alt="Mapa PP" />
               ) : (
-                <span className={s.title}>MapApp</span>
+                <span className={s.title}>Mapa PP</span>
               )}
             </Link>
             <ThemeToggler />

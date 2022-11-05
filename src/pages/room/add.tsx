@@ -52,7 +52,7 @@ const AddBuildingPage = () => {
   return (
     <>
       <Head>
-        <title>Dodawanie sali do {query.buildingName} - MapApp</title>
+        <title>Dodawanie sali do {query.buildingName} - Mapa PP</title>
       </Head>
       <main className={"w-full flex justify-center p-2"}>
         <section className="flex flex-col md:w-1/3 w-2/3">

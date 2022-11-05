@@ -25,7 +25,7 @@ const RoomPage = () => {
   return (
     <>
       <Head>
-        <title>{[data?.aliases[0], data?.buildings.displayName, "MapApp"].filter(Boolean).join(" - ")}</title>
+        <title>{[data?.aliases[0], data?.buildings.displayName, "Mapa PP"].filter(Boolean).join(" - ")}</title>
       </Head>
       <div className={cx(s.scroller, "flex flex-col gap-3")}>
         {url && !isLoading && (
