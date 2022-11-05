@@ -64,6 +64,10 @@ const AddBuildingPage = () => {
                   src={supabase.storage.from("mapa-pp").getPublicUrl(`${data.name}/${level}.png`).data.publicUrl}
                   dotX={x}
                   dotY={y}
+                  onClick={(x, y) => {
+                    setValue("x", Math.floor(x));
+                    setValue("y", Math.floor(y));
+                  }}
                 />
                 <div className="grid grid-cols-2">
                   <TextField icon={"Stairs"} {...register("x", { required: true })}>

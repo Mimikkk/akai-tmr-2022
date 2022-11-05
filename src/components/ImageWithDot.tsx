@@ -4,12 +4,13 @@ interface ImageWithPointProps {
   src: string;
   dotX: number;
   dotY: number;
+  onClick?: (x: number, y: number) => void;
 }
 
 // const dotRadius = 50;
 const dotColor = "#ff0000";
 
-export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
+export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY, onClick }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -36,7 +37,8 @@ export const ImageWithDot: FC<ImageWithPointProps> = ({ src, dotX, dotY }) => {
         const elementRelativeY = e.clientY - rect.top;
         const canvasRelativeX = (elementRelativeX * canvas.width) / rect.width;
         const canvasRelativeY = (elementRelativeY * canvas.height) / rect.height;
-        console.log(canvasRelativeX, canvasRelativeY);
+        onClick?.(canvasRelativeX, canvasRelativeY);
+        // console.log(canvasRelativeX, canvasRelativeY);
       });
     };
   }, [canvasRef, dotX, dotY]);
