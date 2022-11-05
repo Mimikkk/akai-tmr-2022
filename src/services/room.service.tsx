@@ -10,7 +10,7 @@ export const RoomService = {
 
   create: async ({ buildingId, name, x, y, level, aliases }: Room) => {
     const { data: rooms, error }: any = await supabase
-      .from("buildings")
+      .from("rooms")
       .insert([{ buildingId, name, x, y, level, aliases }]);
 
     if (error) throw error;

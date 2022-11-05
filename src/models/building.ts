@@ -1,7 +1,7 @@
 import { Room } from "./room";
 
 export interface Building {
-  id: string;
+  id?: string;
   name: string;
   displayName: string;
   aliases: string[];
