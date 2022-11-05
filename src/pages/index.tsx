@@ -1,5 +1,4 @@
 import { BuildingTile, SearchField } from "../components";
-import { SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Building } from "../models";
