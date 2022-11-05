@@ -30,7 +30,7 @@ const App = () => {
     <div className={"h-full w-full bg-gray grid grid-cols-1 md:grid-cols-2 rounded"}>
       <div className="bg-gray-800 p-4 flex flex-col gap-2">
         <div>
-          <TextField onChange={handleSearch} icon={"Magnifier"}>
+          <TextField onChange={(event) => handleSearch(event.target.value)} icon={"Magnifier"}>
             Wyszukaj salę
           </TextField>
         </div>
