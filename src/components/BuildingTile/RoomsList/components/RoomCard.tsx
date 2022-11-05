@@ -27,7 +27,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
   return (
     <li className={cx(s.content, className)}>
       <div className={s.vote}>
-        <Icon name={"Plus"} className={s.upvote} onClick={() => addPoint.mutate()} />
+        <Icon name={"HandUp"} className={s.upvote} onClick={() => addPoint.mutate()} />
         {room.score}
         <Icon name={"Minus"} className={s.downvote} onClick={() => removePoint.mutate()} />
       </div>
