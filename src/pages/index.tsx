@@ -9,18 +9,19 @@ import cx from "classnames";
 
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
-  const [building, setBuilding] = useState<Building[]>([]);
+  const [buildings, setBuildings] = useState<Building[]>([]);
 
   const handleSearch = useCallback(
     throttle(async (query: string) => {
       try {
         if (isSearching) return;
         if (query.length < 2) {
-          setBuilding([]);
+          setBuildings([]);
           return;
         }
         toggleSearching(true);
-        setBuilding(await BuildingService.search(query));
+        const buildings = await BuildingService.search(query);
+        setBuildings(buildings);
       } finally {
         toggleSearching(false);
       }
@@ -37,10 +38,10 @@ const App = () => {
           </TextField>
         </div>
         <div className={cx(s.items, "flex flex-col gap-2")}>
-          {building.map((building) => (
+          {buildings.map((building) => (
             <BuildingTile building={building} key={building.id} />
           ))}
-          {!building.length && <AddNewRoomCard />}
+          {!buildings.length && <AddNewRoomCard />}
         </div>
       </div>
       <div className="bg-gray-700"></div>
