@@ -1,8 +1,7 @@
-import { RoomsList, SearchField } from "../components";
+import { BuildingTile, SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
-import mockData from "../mock-data";
-import { Building, Room } from "../models";
+import { Building } from "../models";
 import { BuildingService } from "../services";
 
 const App = () => {
@@ -40,28 +39,5 @@ const App = () => {
     </div>
   );
 };
-
-interface BuildingProps {
-  building: Building;
-}
-
-interface RoomProps {
-  room: Room;
-}
-
-const RoomCard = ({ room }: RoomProps) => {
-  return <div className="bg-gray-800 p-4"></div>;
-};
-
-const BuildingTile = ({ building }: BuildingProps) => (
-  <div>
-    <span>{building.displayName}</span>
-    <div>
-      {building.rooms.map((room) => (
-        <RoomCard key={room.id} room={room} />
-      ))}
-    </div>
-  </div>
-);
 
 export default App;

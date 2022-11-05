@@ -1,0 +1,33 @@
+import cx from "classnames";
+import s from "./RoomCard.module.scss";
+import { Icon } from "../../../Icon";
+import Link from "next/link";
+import { Urls } from "../../../../urls.enum";
+import { Building, Room } from "../../../../models";
+
+export interface RoomProps {
+  building: Building;
+  room: Room;
+  className?: string;
+}
+
+export const RoomCard = ({ room, building, className }: RoomProps) => (
+  <li className={cx(s.content, className)}>
+    <div>
+      <h2 className={cx(s.title)}>{room.name}</h2>
+      <span>Building: {building.displayName}</span>
+      <ul className={s.rooms}>
+        <span className={s.room}>
+          Also known as
+          <Icon name="QuestionCircle" />:
+        </span>
+        {room.aliases.map((name) => (
+          <li key={name} className={s.chip}>
+            {name}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <Icon name="ArrowRight" href={`${Urls.Room}/${room.id}`} />
+  </li>
+);

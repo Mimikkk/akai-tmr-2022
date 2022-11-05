@@ -1,4 +1,4 @@
-export enum URLS {
+export enum Urls {
   Room = "room",
   AddRoom = "addRoom",
 }
