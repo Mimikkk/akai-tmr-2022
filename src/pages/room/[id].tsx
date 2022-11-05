@@ -26,7 +26,7 @@ const RoomPage = () => {
   return (
     <>
       <Head>
-        <title>{[data?.aliases[0], data?.buildings.displayName, "MapaPP"].filter(Boolean).join(" - ")}</title>
+        <title>{[data?.aliases[0], data?.buildings.displayName, "Mapapp"].filter(Boolean).join(" - ")}</title>
       </Head>
       <div className={cx(s.scroller, theme === "dark" && s.textDark, "flex flex-col gap-3")}>
         {url && !isLoading && (
@@ -55,8 +55,8 @@ const RoomPage = () => {
                 className="font-bold underline text-blue-500 hover:text-blue-600 transition-all"
                 target="_blank"
               >
-                <div className="btn btn-primary">
-                  <Icon name={"ArrowRight"} className="!w-6 !h-6" />
+                <div className="p-4 bg-gray-500 hover:bg-gray-300 transition-all rounded flex gap-2 text-center justify-center items-center">
+                  <Icon name={"ArrowRight"} className="!w-6 !h-6 dark:text-slate-50" />
                   Link do budynku w Google Maps
                 </div>
               </a>

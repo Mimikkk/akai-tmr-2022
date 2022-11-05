@@ -33,7 +33,7 @@ const App = () => {
   return (
     <>
       <Head>
-        <title>MapaPP</title>
+        <title>Mapapp</title>
       </Head>
       {buildings?.length && isPartyModeEnabled ? <Confetti width={width} height={height} /> : null}
       <div className="h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded">
@@ -45,7 +45,9 @@ const App = () => {
           </div>
           <div className={cx(s.items, "flex flex-col gap-2")}>
             {isLoading ? null : (!buildings || buildings?.length === 0) && query.length > 2 ? (
-              <div className={buildingTileStyles.tile}>Nie znaleźliśmy takiej sali lub budynku.</div>
+              <div className={cx(buildingTileStyles.tile, "dark:text-slate-50 p-4 bg-gray-500")}>
+                Nie znaleźliśmy takiej sali lub budynku.
+              </div>
             ) : (
               <>
                 {buildings?.map((building) => (
