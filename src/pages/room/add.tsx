@@ -3,8 +3,12 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import s from "./add.module.scss";
 import cx from "classnames";
-import { RoomService } from "../../services";
+import { BuildingService, RoomService } from "../../services";
 import Head from "next/head";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { ImageWithDot } from "../../components/ImageWithDot";
+import supabase from "../../supabase";
 
 export interface DataProps {
   aliases: string[];
@@ -18,6 +22,8 @@ const AddBuildingPage = () => {
       aliases: [] as string[],
       room: "",
       level: "",
+      x: 0,
+      y: 0,
     },
   });
   const chips: string[] = watch("aliases");
@@ -27,6 +33,15 @@ const AddBuildingPage = () => {
     RoomService.create({ ...data, buildingId: query.buildingId as string }).then(() => push("/"));
   };
 
+  const { data } = useQuery(
+    ["building", query.buildingId],
+    () => query.buildingId && BuildingService.read(query.buildingId as string),
+  );
+
+  const level = watch("level");
+  const x = watch("x");
+  const y = watch("y");
+
   return (
     <>
       <Head>
@@ -34,6 +49,7 @@ const AddBuildingPage = () => {
       </Head>
       <main className={"w-full flex justify-center p-2"}>
         <section className="flex flex-col md:w-1/3 w-2/3">
+          {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
           <h2 className={"text-5xl text-center text-gray-300 capitalize"}>{query.buildingName}</h2>
           <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-3"}>
             <TextField icon={"Room"} {...register("room", { required: true })}>
@@ -42,6 +58,24 @@ const AddBuildingPage = () => {
             <TextField icon={"Stairs"} {...register("level", { required: true })}>
               Piętro
             </TextField>
+            {data && level.length > 0 ? (
+              <>
+                <ImageWithDot
+                  src={supabase.storage.from("mapa-pp").getPublicUrl(`${data.name}/${level}.png`).data.publicUrl}
+                  dotX={x}
+                  dotY={y}
+                />
+                <div className="grid grid-cols-2">
+                  <TextField icon={"Stairs"} {...register("x", { required: true })}>
+                    X
+                  </TextField>
+                  <TextField icon={"Stairs"} {...register("y", { required: true })}>
+                    Y
+                  </TextField>
+                </div>
+              </>
+            ) : null}
+
             <div>
               <TextField
                 icon={"Alias"}
