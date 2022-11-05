@@ -16,4 +16,23 @@ export const RoomService = {
     if (error) throw error;
     return rooms;
   },
+
+  get: async (id: string) => {
+    const { data, error } = await supabase
+      .from("rooms")
+      .select("*, buildings (name, displayName, latitude, longitude)")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    if (!data) {
+      throw new Error("Room not found");
+    }
+
+    return data;
+  },
 };
+
