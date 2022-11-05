@@ -1,6 +1,8 @@
 import { Icon, TextField } from "../../components";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import s from "./add.module.scss";
+import cx from "classnames";
 
 const AddBuildingPage = () => {
   const { setValue, watch, register, handleSubmit } = useForm({
@@ -51,7 +53,7 @@ const AddBuildingPage = () => {
             >
               Aliasy
             </TextField>
-            <div className="flex flex-wrap max-h-48 overflow-auto items-baseline">
+            <div className={cx(s.items, "flex flex-wrap max-h-48 overflow-auto items-baseline")}>
               {chips?.map((chip) => (
                 <span
                   key={chip}
