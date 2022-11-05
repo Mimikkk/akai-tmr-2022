@@ -33,7 +33,7 @@ const App = () => {
   return (
     <>
       <Head>
-        <title>Mapapp</title>
+        <title>MapApp</title>
       </Head>
       {buildings?.length && isPartyModeEnabled ? <Confetti width={width} height={height} /> : null}
       <div className="h-full w-full bg-gray grid grid-cols-1 md:grid-cols-1 max-w-5xl rounded">
