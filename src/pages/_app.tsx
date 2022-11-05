@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }: AppProps) => (
         <div>
           <Icon className="!w-12 !h-12" name="Home" href="/" />
         </div>
-        <span className={s.title}>Supabase głupie</span>
+        <span className={s.title}>Supabase RPC</span>
       </header>
       <main className={s.main}>
         <Component {...pageProps} />
