@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, InputHTMLAttributes, PropsWithChildren, useCallback, useId } from "react";
+import { ChangeEvent, FC, forwardRef, InputHTMLAttributes, PropsWithChildren, useCallback, useId } from "react";
 import s from "./TextField.module.scss";
 import { Icon } from "../Icon";
 import { IconName } from "../Icon/IconRegistry";
@@ -9,19 +9,23 @@ interface TextFieldProps extends PropsWithChildren, InputHTMLAttributes<HTMLInpu
   className?: string;
 }
 
-export const TextField: FC<TextFieldProps> = ({ icon, className, children, ...props }) => {
-  const id = useId();
-  return (
-    <div className={cx(s.container, className)}>
-      {icon && (
-        <div className={s.iconContainer}>
-          <Icon name={icon} className={s.icon} />
-        </div>
-      )}
-      <input id={id} className={s.input} type="text" placeholder=" " {...props} />
-      <label htmlFor={id} id={`${id}-label`} className={s.label}>
-        {children}
-      </label>
-    </div>
-  );
-};
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+  ({ icon, className, children, ...props }, ref) => {
+    let id = useId();
+    id = props?.name ?? id;
+
+    return (
+      <div className={cx(s.container, className)}>
+        {icon && (
+          <div className={s.iconContainer}>
+            <Icon name={icon} className={s.icon} />
+          </div>
+        )}
+        <input ref={ref} id={id} className={s.input} type="text" placeholder=" " {...props} />
+        <label htmlFor={id} id={`${id}-label`} className={s.label}>
+          {children}
+        </label>
+      </div>
+    );
+  },
+);
