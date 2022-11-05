@@ -9,7 +9,7 @@ interface BuildingProps {
 }
 
 export const BuildingTile = ({ building }: BuildingProps) => (
-  <div className={cx(s.tile, "bg-gray-200 dark:bg-gray-800")}>
+  <div className={cx(s.tile, "bg-gray-300 dark:bg-gray-700")}>
     <RoomsList className="flex flex-col gap-3">
       <span className={cx(s.title, "text-slate-800 dark:text-slate-200")}>{building.displayName}</span>
       {building.rooms.map((room) => (

@@ -43,7 +43,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
             <span className={s.room} title="Alternatywne nazwy dla sali">
               Inne nazwy:
             </span>
-            <ul className="flex">
+            <ul className="flex flex-wrap">
               {room.aliases.map((name) => (
                 <li key={name} className={s.chip}>
                   {name}
