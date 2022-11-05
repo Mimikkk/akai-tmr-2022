@@ -1,5 +1,6 @@
 import { Icon, TextField } from "../../components";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const AddBuildingPage = () => {
   const { setValue, watch, register, handleSubmit } = useForm({
@@ -13,14 +14,19 @@ const AddBuildingPage = () => {
   });
   const chips: string[] = watch("aliases");
 
+  const { query } = useRouter();
+
   const onSubmit = (data: any) => console.log(data);
 
   return (
     <main className={"bg-slate-700 w-full flex justify-center p-2"}>
-      <section className="flex w-1/3">
-        <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-2"}>
+      <section className="flex flex-col w-1/3">
+        <h2 className={"text-2xl font-bold text-center"}>{query.buildingName}</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-3"}>
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
+          </TextField>
+          <TextField icon={"Level"} {...register("level", { required: true })}>
           </TextField>
           <TextField icon={"Building"} {...register("building", { required: true })}>
             Budynek
