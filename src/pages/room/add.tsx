@@ -49,11 +49,11 @@ const AddBuildingPage = () => {
             >
               Aliasy
             </TextField>
-            <div className="flex">
+            <div className="flex flex-col">
               {chips?.map((chip) => (
                 <span
                   key={chip}
-                  className="bg-slate-400 items-center justify-center flex hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
+                  className="bg-slate-400 flex items-center justify-center hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
                 >
                   {chip}
                   <Icon
