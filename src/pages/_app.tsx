@@ -15,7 +15,9 @@ const App = ({ Component, pageProps }: AppProps) => (
         <div>
           <Icon className={s.icon} name="Home" href="/" />
         </div>
-        <span className={s.title}>Mapa PP</span>
+        <span className={s.title}>
+          <img src={"/cool-logo.gif"} alt="loading..." />
+        </span>
       </header>
       <main className={s.main}>
         <Component {...pageProps} />
