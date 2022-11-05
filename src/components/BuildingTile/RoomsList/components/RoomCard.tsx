@@ -32,11 +32,10 @@ export const RoomCard = ({ room, className }: RoomProps) => {
         <Icon name={"ThumbsDown"} className={s.downvote} onClick={() => removePoint.mutate()} />
       </div>
       <div className={"grow mx-2"}>
-        <h2 className={cx(s.title)}>Nazwa sali: {room.name}</h2>
+        <h2 className={cx(s.title)}>{room.name}</h2>
         <ul className={s.rooms}>
           <span className={s.room} title="Alternatywna nazwa dla sali">
-            Też znana jako
-            <Icon name="QuestionCircle" />:
+            Inne nazwy:
           </span>
           {room.aliases.map((name) => (
             <li key={name} className={s.chip}>

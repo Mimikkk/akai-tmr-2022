@@ -9,7 +9,7 @@ interface BuildingProps {
 
 export const BuildingTile = ({ building }: BuildingProps) => (
   <div className={s.tile}>
-    <span className={s.title}>Budynek: {building.displayName}</span>
+    <span className={s.title}>{building.displayName}</span>
     <RoomsList>
       {building.rooms.map((room) => (
         <RoomCard key={room.id} room={room} />
