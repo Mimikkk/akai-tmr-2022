@@ -1,9 +1,8 @@
-import { AddNewRoomCard, BuildingTile, Icon, TextField } from "../components";
+import { BuildingTile, TextField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Building } from "../models";
 import { BuildingService } from "../services";
-import Link from "next/link";
 import s from "./index.module.scss";
 import cx from "classnames";
 
@@ -42,6 +41,8 @@ const App = () => {
           {buildings.map((building) => (
             <BuildingTile building={building} key={building.id} />
           ))}
+          {buildings.length === 0 &&
+            "Nie znaleziono żadnych wyników. Jeśli jesteś pewna/pewien, że takie budynek lub sala istnieje, możesz go dodać."}
         </div>
       </div>
       <div className="bg-gray-700"></div>
