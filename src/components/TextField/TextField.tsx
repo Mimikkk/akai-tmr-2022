@@ -1,23 +1,29 @@
-import s from "./SearchField.module.scss";
 import { ChangeEvent, FC, PropsWithChildren, useCallback, useId } from "react";
+import s from "./TextField.module.scss";
 import { Icon } from "../Icon";
+import { IconName } from "../Icon/IconRegistry";
+import cx from "classnames";
 
 interface SearchFieldProps extends PropsWithChildren {
   onChange?: (query: string, event: ChangeEvent<HTMLInputElement>) => void;
+  icon?: IconName;
+  className?: string;
 }
 
-export const SearchField: FC<SearchFieldProps> = (props) => {
+export const TextField: FC<SearchFieldProps> = (props) => {
   const id = useId();
   const handleChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      return props.onChange?.(event.target.value, event);
-    },
+    (event: ChangeEvent<HTMLInputElement>) => props.onChange?.(event.target.value, event),
     [props?.onChange],
   );
 
   return (
-    <div className={s.container}>
-      <Icon name="Magnifier" className={s.icon} />
+    <div className={cx(s.container, props?.className)}>
+      {props?.icon && (
+        <div className={s.iconContainer}>
+          <Icon name={props.icon} className={s.icon} />
+        </div>
+      )}
       <input
         id={id}
         className={s.input}
