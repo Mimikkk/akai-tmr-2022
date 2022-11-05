@@ -8,6 +8,7 @@ import Head from "next/head";
 import { useQuery } from "@tanstack/react-query";
 import { ImageWithDot } from "../../components/ImageWithDot";
 import supabase from "../../supabase";
+import { useEffect } from "react";
 
 export interface DataProps {
   aliases: string[];
