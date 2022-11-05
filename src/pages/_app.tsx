@@ -8,7 +8,6 @@ import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggler } from "../components/ThemeToggler";
 import cx from "classnames";
-import Head from "next/head";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 0 } },
@@ -40,7 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           >
             <span className={s.hidden}>Aplikacja stworzona podczas hackathonu AKAI Code 4-5.11.2022</span>
             <Icon
-              className={"mx-2 hover:cursor-pointer fill-slate-200"}
+              className={"mx-2 hover:cursor-pointer fill-slate-700 dark:fill-slate-200"}
               onClick={() => window.open("https://github.com/Mimikkk/akai-tmr-2022", "_blank")}
               name={"GithubIcon"}
             />
