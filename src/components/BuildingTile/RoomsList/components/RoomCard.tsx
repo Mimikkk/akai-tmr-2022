@@ -31,7 +31,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
         {room.score}
         <Icon name={"Minus"} className={s.downvote} onClick={() => removePoint.mutate()} />
       </div>
-      <div>
+      <div className={"grow mx-2"}>
         <h2 className={cx(s.title)}>Nazwa sali: {room.name}</h2>
         <ul className={s.rooms}>
           <span className={s.room} title="Alternatywna nazwa dla sali">
