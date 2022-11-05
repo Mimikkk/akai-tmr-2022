@@ -2,7 +2,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import { ComponentProps } from "react";
+import { LocationMarker } from "./LocationMarker";
 
 export const LeafletMap = ({ data }: { data: any }) => {
   const geo = [data.latitude, data.longitude] as [number, number];
@@ -20,6 +20,7 @@ export const LeafletMap = ({ data }: { data: any }) => {
       <Marker position={geo}>
         <Popup>{data.displayName}</Popup>
       </Marker>
+      <LocationMarker />
     </MapContainer>
   );
 };
