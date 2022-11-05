@@ -4,19 +4,13 @@ import { Icon } from "../Icon";
 import { IconName } from "../Icon/IconRegistry";
 import cx from "classnames";
 
-interface SearchFieldProps extends PropsWithChildren, Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
-  onChange?: (query: string, event: ChangeEvent<HTMLInputElement>) => void;
+interface TextFieldProps extends PropsWithChildren, InputHTMLAttributes<HTMLInputElement> {
   icon?: IconName;
   className?: string;
 }
 
-export const TextField: FC<SearchFieldProps> = ({ onChange, icon, className, ...props }) => {
+export const TextField: FC<TextFieldProps> = ({ onChange, icon, className, children, ...props }) => {
   const id = useId();
-  const handleChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => onChange?.(event.target.value, event),
-    [onChange],
-  );
-
   return (
     <div className={cx(s.container, className)}>
       {icon && (
@@ -24,16 +18,9 @@ export const TextField: FC<SearchFieldProps> = ({ onChange, icon, className, ...
           <Icon name={icon} className={s.icon} />
         </div>
       )}
-      <input
-        id={id}
-        className={s.input}
-        {...props}
-        type="text"
-        onChange={onChange ? handleChange : undefined}
-        placeholder=" "
-      />
+      <input {...props} id={id} className={s.input} type="text" placeholder=" " />
       <label htmlFor={id} id={`${id}-label`} className={s.label}>
-        {props?.children}
+        {children}
       </label>
     </div>
   );
