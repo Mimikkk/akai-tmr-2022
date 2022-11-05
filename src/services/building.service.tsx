@@ -8,9 +8,8 @@ export const BuildingService = {
   search: async (query: string): Promise<Building[]> =>
     ((await supabase.rpc("search", { searchText: query })) as any).data.map(({ building }: any) => ({
       ...building,
-      rooms: compact(building?.rooms ?? []),
+      rooms: compact(building?.rooms ?? []).sort((a: any, b: any) => b.score - a.score),
     })),
-
   create: async (building: BuildingProps) => {
     const { data: buildings, error }: any = await supabase.from("buildings").insert([building]);
 
