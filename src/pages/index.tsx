@@ -34,7 +34,7 @@ const App = () => {
             Wyszukaj salę
           </TextField>
         </div>
-        <div>
+        <div className="flex flex-col gap-2">
           {building.map((building) => (
             <BuildingTile building={building} key={building.id} />
           ))}
