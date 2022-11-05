@@ -2,7 +2,15 @@
 
 .tile {
   @apply bg-slate-700 justify-center items-center rounded p-2;
+
   .title {
+    @apply transition-all;
     @apply text-slate-400 font-bold text-xl pl-8;
+  }
+
+  &:hover {
+    .title {
+      @apply text-slate-200;
+    }
   }
 }
