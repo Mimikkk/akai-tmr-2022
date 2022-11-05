@@ -4,6 +4,7 @@ import { ImageWithDot } from "../../components/ImageWithDot";
 import { LeafletMapNoSSR } from "../../components/LeafletMapNoSSR";
 import { RoomService } from "../../services";
 import supabase from "../../supabase";
+import s from "./[id].module.scss";
 
 const RoomPage = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const RoomPage = () => {
     : { data: undefined };
 
   return (
-    <div className="max-w-lg">
+    <div className={s.scroller}>
       <p>Post: {id}</p>
       {urlData && !isLoading && (
         <>

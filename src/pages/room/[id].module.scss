@@ -1,0 +1,6 @@
+@use 'styles/utils' as s;
+
+.scroller {
+  @apply max-w-5xl max-h-full px-2;
+  @include s.scrollable;
+}

@@ -8,7 +8,7 @@ export const LeafletMap = ({ data }: { data: any }) => {
   const geo = [data.latitude, data.longitude] as [number, number];
   return (
     <MapContainer
-      style={{ width: "100%", height: "200px", position: "relative" }}
+      style={{ width: "100%", height: "420px", position: "relative" }}
       center={geo}
       zoom={15}
       scrollWheelZoom={false}
@@ -25,4 +25,3 @@ export const LeafletMap = ({ data }: { data: any }) => {
 };
 
 export default LeafletMap;
-
