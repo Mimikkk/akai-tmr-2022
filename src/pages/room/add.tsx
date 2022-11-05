@@ -14,6 +14,8 @@ export interface DataProps {
   aliases: string[];
   level: string;
   room: string;
+  x: number;
+  y: number;
 }
 
 const AddBuildingPage = () => {
@@ -41,6 +43,10 @@ const AddBuildingPage = () => {
   const level = watch("level");
   const x = watch("x");
   const y = watch("y");
+  useEffect(() => {
+    setValue("x", 0);
+    setValue("y", 0);
+  }, [level]);
 
   return (
     <>
@@ -127,3 +133,4 @@ const AddBuildingPage = () => {
 };
 
 export default AddBuildingPage;
+

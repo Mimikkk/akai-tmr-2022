@@ -4,7 +4,7 @@ $height: 1rem;
 $scaling-factor: 0.8;
 $input-y-offset: 0.75rem;
 $label-y-offset: -1rem;
-$font-size: 2.0rem;
+$font-size: 2rem;
 
 .container {
   @apply flex flex-grow relative;
@@ -35,6 +35,7 @@ $font-size: 2.0rem;
     @apply outline-0;
     @apply px-1;
     @apply transition-all;
+    @apply flex-grow;
     @include s.truncate;
     line-height: normal;
     font-size: $font-size;
@@ -93,3 +94,4 @@ $font-size: 2.0rem;
     }
   }
 }
+
