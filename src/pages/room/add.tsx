@@ -1,21 +1,29 @@
-import { TextField } from "../../components";
+import { Icon, TextField } from "../../components";
 import { useForm } from "react-hook-form";
 
 const AddBuildingPage = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const { setValue, watch, register, handleSubmit } = useForm({
+    defaultValues: {
+      aliases: [] as string[],
+      room: "",
+      building: "",
+      level: "",
+      displayName: "",
+    },
+  });
+  const chips: string[] = watch("aliases");
 
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <main className={"bg-slate-500 w-full flex justify-center p-2"}>
+    <main className={"bg-slate-700 w-full flex justify-center p-2"}>
       <section className="flex">
         <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-2"}>
           <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
+          </TextField>
+          <TextField icon={"Building"} {...register("displayName", { required: true })}>
+            Nazwa Wyświetlana
           </TextField>
           <TextField icon={"Building"} {...register("building", { required: true })}>
             Budynek
@@ -23,7 +31,48 @@ const AddBuildingPage = () => {
           <TextField icon={"Level"} {...(register("level"), { required: true })}>
             Piętro
           </TextField>
-          <input className={"btn btn-primary"} type={"submit"} />
+          <div className="afe">
+            <TextField
+              icon={"Level"}
+              onKeyDown={(event) => {
+                const { value } = event.currentTarget;
+                if (!value || event.key !== "Enter") {
+                  event.stopPropagation();
+                  return;
+                }
+
+                if (chips.includes(value)) return;
+                event.currentTarget.value = "";
+                setValue("aliases", [...chips, value]);
+                event.preventDefault();
+              }}
+            >
+              Aliasy
+            </TextField>
+            <div className="flex">
+              {chips?.map((chip) => (
+                <span
+                  key={chip}
+                  className="bg-slate-400 items-center justify-center flex hover:bg-gray-300 transition-all m-1 px-2 rounded-xl font-medium"
+                >
+                  {chip}
+                  <Icon
+                    name="Minus"
+                    className="cursor-pointer hover:text-red-500"
+                    onClick={() =>
+                      setValue(
+                        "aliases",
+                        chips.filter((c) => c !== chip),
+                      )
+                    }
+                  />
+                </span>
+              ))}
+            </div>
+          </div>
+          <button className={"w-full btn btn-primary"} type={"submit"}>
+            Prześlij
+          </button>
         </form>
       </section>
     </main>
