@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 import s from "./_app.module.scss";
 import { Icon } from "../components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { usePartyModeStore } from "../usePartyMode";
 
 const queryClient = new QueryClient({
@@ -11,13 +10,6 @@ const queryClient = new QueryClient({
 });
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const [sleepCounter, setCounter] = useState(0);
-
-  useEffect(() => {
-    if (sleepCounter !== 5) return;
-    alert("Świetne zagranie!!");
-  }, [sleepCounter]);
-
   const { isPartyModeEnabled, togglePartyMode } = usePartyModeStore();
 
   return (
@@ -28,17 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Icon className={s.icon} name="Home" href="/" />
           </div>
           <span className={s.title}>
-            {isPartyModeEnabled ? (
-              <img
-                src={"/cool-logo.gif"}
-                alt="loading..."
-                onClick={() => {
-                  setCounter(sleepCounter + 1);
-                }}
-              />
-            ) : (
-              <span>MapaPP</span>
-            )}
+            {isPartyModeEnabled ? <img src={"/cool-logo.gif"} alt="MapaPP" /> : <span>MapaPP</span>}
           </span>
         </header>
         <main className={s.main}>
