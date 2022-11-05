@@ -9,7 +9,7 @@ const containsName = (query: string, names: string[]) =>
 const sortFn = <T, P>(query: string, options: Building[]): Building[] => {
   const startsWith = [];
   const included = [];
-
+  const rest = [];
   for (const option of options) {
     const a = option.displayName.toLowerCase();
     const b = query.toLowerCase();
@@ -17,10 +17,12 @@ const sortFn = <T, P>(query: string, options: Building[]): Building[] => {
       startsWith.push(option);
     } else if (a.includes(b)) {
       included.push(option);
+    } else {
+      rest.push(option);
     }
   }
 
-  return startsWith.concat(included);
+  return startsWith.concat(included).concat(rest);
 };
 
 export default async (request: NextApiRequest, response: NextApiResponse<Building[]>) => {
