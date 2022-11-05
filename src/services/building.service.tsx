@@ -5,7 +5,10 @@ type BuildingProps = Omit<Building, "rooms">;
 
 export const BuildingService = {
   search: async (query: string): Promise<Building[]> =>
-    ((await supabase.rpc("search", { searchText: query })) as any).data.map((building: any) => building.building),
+    ((await supabase.rpc("search", { searchText: query })) as any).data.map(({ building }: any) => ({
+      ...building,
+      rooms: building?.rooms ?? [],
+    })),
 
   create: async (building: BuildingProps) => {
     const { data: buildings, error }: any = await supabase.from("buildings").insert([building]);

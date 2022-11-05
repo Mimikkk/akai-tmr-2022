@@ -21,6 +21,7 @@ const App = () => {
         }
         toggleSearching(true);
         const buildings = await BuildingService.search(query);
+        console.log({ buildings });
         setBuildings(buildings);
       } finally {
         toggleSearching(false);
