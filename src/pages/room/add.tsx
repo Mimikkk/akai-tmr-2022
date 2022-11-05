@@ -21,10 +21,9 @@ const AddBuildingPage = () => {
   });
   const chips: string[] = watch("aliases");
 
-  const { query } = useRouter();
-
+  const { query, push } = useRouter();
   const onSubmit = (data: DataProps) => {
-    RoomService.create({ ...data, buildingId: query.buildingId as string }).then();
+    RoomService.create({ ...data, buildingId: query.buildingId as string }).then(() => push("/"));
   };
 
   return (
@@ -32,10 +31,10 @@ const AddBuildingPage = () => {
       <section className="flex flex-col w-1/3">
         <h2 className={"text-6xl text-center text-gray-500"}>{query.buildingName}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className={"[&>*]:my-3"}>
-          <TextField icon={"Room"} {...register("room")}>
+          <TextField icon={"Room"} {...register("room", { required: true })}>
             Nazwa sali
           </TextField>
-          <TextField icon={"Stairs"} {...register("level")}>
+          <TextField icon={"Stairs"} {...register("level", { required: true })}>
             Piętro
           </TextField>
           <div className="">
