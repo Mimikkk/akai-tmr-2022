@@ -8,6 +8,8 @@ import supabase from "../../supabase";
 import s from "./[id].module.scss";
 import cx from "classnames";
 import Head from "next/head";
+import { Icon } from "../../components";
+import { useTheme } from "next-themes";
 
 const RoomPage = () => {
   const router = useRouter();
@@ -18,13 +20,15 @@ const RoomPage = () => {
       setUrl(supabase.storage.from("mapa-pp").getPublicUrl(`${data.buildings.name}/${data.level}.png`).data.publicUrl);
     },
   });
+  const { theme } = useTheme();
+  console.log({ theme });
 
   return (
     <>
       <Head>
         <title>{[data?.aliases[0], data?.buildings.displayName, "MapaPP"].filter(Boolean).join(" - ")}</title>
       </Head>
-      <div className={cx(s.scroller, "flex flex-col gap-3")}>
+      <div className={cx(s.scroller, theme === "dark" && s.textDark, "flex flex-col gap-3")}>
         {url && !isLoading && (
           <>
             <h1 className="font-bold text-3xl">{data.aliases[0]}</h1>
@@ -51,7 +55,10 @@ const RoomPage = () => {
                 className="font-bold underline text-blue-500 hover:text-blue-600 transition-all"
                 target="_blank"
               >
-                Link do budynku w Google Maps
+                <div className="btn btn-primary">
+                  <Icon name={"ArrowRight"} className="!w-6 !h-6" />
+                  Link do budynku w Google Maps
+                </div>
               </a>
             </div>
 

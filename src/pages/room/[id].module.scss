@@ -4,3 +4,7 @@
   @apply max-w-5xl max-h-full px-2;
   @include s.scrollable;
 }
+
+.textDark * {
+  @apply text-slate-50;
+}
