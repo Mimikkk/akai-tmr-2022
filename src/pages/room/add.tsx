@@ -38,7 +38,7 @@ const AddBuildingPage = () => {
           <TextField icon={"Stairs"} {...register("level")}>
             Piętro
           </TextField>
-          <div className="">
+          <div>
             <TextField
               icon={"Alias"}
               onKeyDown={(event) => {
