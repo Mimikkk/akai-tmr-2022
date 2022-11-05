@@ -5,7 +5,8 @@
   @apply transition-all;
 
   .vote {
-    @apply flex flex-col pr-1;
+    @apply flex flex-col items-center bg-slate-300 rounded-full justify-center px-1 mr-1;
+    @apply transition-all;
 
     .upvote {
       @apply text-green-500 hover:text-green-700 cursor-pointer;
@@ -13,6 +14,11 @@
 
     .downvote {
       @apply text-red-500 hover:text-red-700 cursor-pointer;
+    }
+
+    &:hover {
+      @apply font-bold;
+      filter: brightness(0.95);
     }
   }
 
