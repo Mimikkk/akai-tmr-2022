@@ -7,9 +7,7 @@ const AddBuildingPage = () => {
     defaultValues: {
       aliases: [] as string[],
       room: "",
-      building: "",
       level: "",
-      displayName: "",
     },
   });
   const chips: string[] = watch("aliases");

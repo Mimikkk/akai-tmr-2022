@@ -3,7 +3,6 @@ import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
 import { Building } from "../models";
 import { BuildingService } from "../services";
-import Link from "next/link";
 
 const App = () => {
   const [isSearching, toggleSearching] = useState(false);
@@ -38,7 +37,6 @@ const App = () => {
           {building.map((building) => (
             <BuildingTile building={building} key={building.id} />
           ))}
-          {!building.length && <AddNewRoomCard />}
         </div>
       </div>
       <div className="bg-gray-700"></div>
