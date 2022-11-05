@@ -34,7 +34,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
       </div>
 
       <Link href={`${Urls.Room}/${room.id}`} className="flex grow mx-2">
-        <div className={"grow mx-2"}>
+        <div className="grow mx-2">
           <h2 className={cx(s.title)}>{room.name}</h2>
           <div>
             <span className={s.room}>Piętro: {room.level}</span>
@@ -43,7 +43,7 @@ export const RoomCard = ({ room, className }: RoomProps) => {
             <span className={s.room} title="Alternatywne nazwy dla sali">
               Inne nazwy:
             </span>
-            <ul className="flex">
+            <ul className="flex flex-wrap">
               {room.aliases.map((name) => (
                 <li key={name} className={s.chip}>
                   {name}
