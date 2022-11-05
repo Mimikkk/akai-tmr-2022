@@ -6,6 +6,8 @@ interface Props {
   level: string;
   room: string;
   buildingId: string;
+  x: number;
+  y: number;
 }
 
 export const RoomService = {
@@ -15,8 +17,8 @@ export const RoomService = {
     return rooms;
   },
 
-  create: async ({ aliases, level, room: name, buildingId }: Props) => {
-    const { data, error }: any = await supabase.from("rooms").insert([{ aliases, level, name, buildingId }]);
+  create: async ({ aliases, level, room: name, buildingId, x, y }: Props) => {
+    const { data, error }: any = await supabase.from("rooms").insert([{ aliases, level, name, buildingId, x, y }]);
 
     if (error) throw error;
     return data;
@@ -43,3 +45,4 @@ export const RoomService = {
     return data;
   },
 };
+
