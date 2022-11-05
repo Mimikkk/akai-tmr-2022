@@ -67,7 +67,7 @@ const AddBuildingPage = () => {
                   }
                 >
                   {chip}
-                  <Icon name="Minus" className="cursor-pointer hover:text-red-500" />
+                  <Icon name="XCircle" className="cursor-pointer hover:text-red-500" />
                 </span>
               ))}
             </div>
