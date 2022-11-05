@@ -1,7 +1,6 @@
-import { RoomsList, SearchField } from "../components";
+import { SearchField } from "../components";
 import { useCallback, useState } from "react";
 import { throttle } from "lodash-es";
-import mockData from "../mock-data";
 import { Building, Room } from "../models";
 import { BuildingService } from "../services";
 
