@@ -1,16 +1,10 @@
 @use 'styles/utils' as s;
 
 .tile {
-  @apply bg-gray-800 justify-center items-center rounded p-3;
+  @apply justify-center items-center rounded p-3;
 
   .title {
     @apply transition-all;
-    @apply text-slate-200 font-bold text-xl pl-8;
-  }
-
-  &:hover {
-    .title {
-      @apply text-slate-200;
-    }
+    @apply font-bold text-xl pl-8;
   }
 }

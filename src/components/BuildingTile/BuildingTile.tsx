@@ -2,15 +2,16 @@ import { Building } from "../../models";
 import { RoomCard, RoomsList } from "./RoomsList";
 import { AddNewRoomCard } from "./AddNewRoomCard";
 import s from "./BuildingTile.module.scss";
+import cx from "classnames";
 
 interface BuildingProps {
   building: Building;
 }
 
 export const BuildingTile = ({ building }: BuildingProps) => (
-  <div className={s.tile}>
+  <div className={cx(s.tile, "bg-gray-200 dark:bg-gray-800")}>
     <RoomsList className="flex flex-col gap-3">
-      <span className={s.title}>{building.displayName}</span>
+      <span className={cx(s.title, "text-slate-800 dark:text-slate-200")}>{building.displayName}</span>
       {building.rooms.map((room) => (
         <RoomCard key={room.id} room={room} />
       ))}
