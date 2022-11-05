@@ -46,11 +46,11 @@ const App = () => {
             </TextField>
           </div>
           <div className={cx(s.items, "flex flex-col gap-2")}>
-            {isLoading ? null : !buildings || buildings?.length === 0 ? (
+            {isLoading ? null : (!buildings || buildings?.length === 0) && query.length > 2 ? (
               <div className={buildingTileStyles.tile}>Nie znaleźliśmy takiej sali lub budynku.</div>
             ) : (
               <>
-                {buildings.map((building) => (
+                {buildings?.map((building) => (
                   <BuildingTile building={building} key={building.id} />
                 ))}
               </>

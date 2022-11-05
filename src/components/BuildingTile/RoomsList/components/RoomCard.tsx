@@ -35,16 +35,21 @@ export const RoomCard = ({ room, className }: RoomProps) => {
         </div>
         <div className={"grow mx-2"}>
           <h2 className={cx(s.title)}>{room.name}</h2>
-          <ul className={s.rooms}>
+          <div>
+            <span className={s.room}>Piętro: {room.level}</span>
+          </div>
+          <div className={s.rooms}>
             <span className={s.room} title="Alternatywne nazwy dla sali">
               Inne nazwy:
             </span>
-            {room.aliases.map((name) => (
-              <li key={name} className={s.chip}>
-                {name}
-              </li>
-            ))}
-          </ul>
+            <ul className="flex">
+              {room.aliases.map((name) => (
+                <li key={name} className={s.chip}>
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <Icon name="ArrowRight" />
       </li>
